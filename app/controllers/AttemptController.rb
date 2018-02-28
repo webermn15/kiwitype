@@ -1,0 +1,3 @@
+class AttemptController < ApplicationController
+
+end

@@ -1,0 +1,1 @@
+INSERT INTO excerpts (author, description, body) VALUES (, 1, '{"hintone"}');
