@@ -1,7 +1,14 @@
 import React, { Component } from 'react';
+import Header from './Header';
+import Main from './main'
 
-const App = () => (
-	<h1> {'Hello, idiot'}</h1>
-)
-
-export default App
+export default class App extends Component<{}> {
+	render() {
+		return(
+			<div>
+				<Header />
+				<Main />
+			</div>
+		)
+	}
+}

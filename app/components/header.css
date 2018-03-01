@@ -1,0 +1,14 @@
+.header {	
+	width: 100%;
+	background-color: peachpuff;
+}
+.header-nav {
+	display: flex;
+	justify-content: space-between;
+}
+.nav-inner {
+	display: flex;
+	justify-content: space-around;
+	padding: 20px;
+	width: 200px;
+}
