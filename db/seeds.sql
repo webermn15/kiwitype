@@ -1,1 +1,1 @@
-INSERT INTO excerpts (author, description, body) VALUES (, 1, '{"hintone"}');
+INSERT INTO excerpts (author, title, description, body) VALUES ('Robert Frost', 'The Road Not Taken', 'Published in 1962 as the first poem in the collection, "Mountain Interval"',  'I shall be telling this with a sigh Somewhere ages and ages hence: Two roads diverged in a wood, and I— I took the one less traveled by, And that has made all the difference.');
