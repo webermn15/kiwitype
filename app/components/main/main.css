@@ -1,5 +1,11 @@
 .main-container {
-	margin: 0 auto;
-	width: 60vw;
 	border: 1px dashed black;
+	width: 50vw;
+	height: 50vh;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
+}
+.main-container div {
+	border: 1px solid pink;
 }

@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
-import Header from './Header';
-import Main from './main'
+import Header from './header';
+import Content from './Content'
 
 export default class App extends Component<{}> {
 	render() {
 		return(
 			<div>
 				<Header />
-				<Main />
+				<Content />
 			</div>
 		)
 	}
