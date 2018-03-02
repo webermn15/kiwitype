@@ -8,6 +8,8 @@ class ApplicationController < Sinatra::Base
  		:database => 'kiwitypedev'
 	)
 
+	register Sinatra::CrossOrigin
+
 	configure do
 		enable :cross_origin
 	end
@@ -17,7 +19,8 @@ class ApplicationController < Sinatra::Base
 	set :allow_credentials, true
 
 	options "*" do
-		response.headers["Allow"] ="HEAD, GET, PUT, POST, DELETE, OPTIONS"
+		response.headers["Allow"] = 'HEAD, GET, PUT, POST, DELETE, OPTIONS'
+		response.headers['Access-Control-Allow-Origin'] = '*'
 		response.headers["Access-Control-Allow-Headers"] = "X-Requested-With, X-HTTP-Method-Override, Content-Type, Cache-Control, Accept"
 	end
 

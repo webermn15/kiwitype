@@ -5,6 +5,7 @@ require 'sinatra/activerecord'
 require './app/controllers/ApplicationController'
 require './app/controllers/UserController'
 require './app/controllers/AttemptController'
+require './app/controllers/ExcerptController'
 
 #Model reqs
 require './app/models/UserModel'
@@ -19,4 +20,7 @@ map('/users') {
 }
 map('/attempts') {
 	run AttemptController
+}
+map('/excerpts') {
+	run ExcerptController
 }

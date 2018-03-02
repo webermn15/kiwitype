@@ -1,10 +1,42 @@
-import React from 'react'
+import React, { Component } from 'react'
+import request from 'superagent'
+import ExcerptDetail from './ExcerptDetail'
 
-const Excerpt = () => (
-	<div>
-		<div>Lorem ipsum cupidatat aute consectetur ullamco magna excepteur sunt pariatur deserunt nulla proident sit incididunt amet. Ullamco excepteur cupidatat laboris elit nulla elit mollit occaecat ad dolore enim ut officia est in aliqua non sed.
-		</div>
-	</div>
-)
+export default class Excerpt extends Component<{}> {
+	constructor(props) {
+		super(props)
 
-export default Excerpt
+		this.state = {
+			id: 0,
+			author: '',
+			title: '',
+			description: '',
+			body: ''
+		}
+	}
+	componentDidMount = () => {
+		request
+			.get('http://localhost:9292/excerpts/random')
+			.end((err, data) => {
+				if (err) {
+					console.log(err)
+				}
+				else {
+					const parsed = JSON.parse(data.text)
+					parsed.active = true
+					
+				}
+			})
+	}
+	render() {
+		console.log(this.props)
+		return(
+			<div>
+				<ExcerptDetail author={this.state.author} title={this.state.title} description={this.state.description}/>
+				<div>
+					{this.state.body}
+				</div>
+			</div>
+		)
+	}
+}

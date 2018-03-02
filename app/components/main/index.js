@@ -1,12 +1,12 @@
 import React from 'react'
-import Excerpt from './Excerpt'
+import ExcerptContainer from '../../containers/ExcerptContainer'
 import ExcerptInput from './ExcerptInput'
 import KeyboardDisplay from './KeyboardDisplay'
 import './main.css'
 
 const Main = () => (
 	<div className="main-container">
-		<Excerpt />
+		<ExcerptContainer />
 		<ExcerptInput />
 		<KeyboardDisplay />
 	</div>

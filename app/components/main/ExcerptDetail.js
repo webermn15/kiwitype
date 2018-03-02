@@ -1,8 +1,9 @@
 import React from 'react'
+import './main.css'
 
-const ExcerptDetail = () => (
-	<div>
-		<div>Title</div><div> - Author</div><div>Description Labore aliqua ea laboris labore occaecat adipisicing in sed.</div>
+const ExcerptDetail = ({author, title, description}) => (
+	<div className="excerpt-detail">
+		<div>{ title } - { author }:</div><div>{ description }</div>
 	</div>
 )
 
