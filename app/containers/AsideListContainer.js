@@ -17,7 +17,8 @@ const getAsideList = (state, filter) => {
 
 const mapStateToProps = state => {
 	return {
-		asideList: getAsideList(state, state.asideFilter)
+		asideList: getAsideList(state, state.asideFilter),
+    asideFilter: state.asideFilter
 	}
 }
 
@@ -30,7 +31,8 @@ const mapDispatchToProps = dispatch => {
 }
 
 const AsideListContainer = connect(
-	mapStateToProps
+	mapStateToProps,
+  mapDispatchToProps
 )(AsideList)
 
 export default AsideListContainer

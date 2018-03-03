@@ -2,7 +2,7 @@ import React from 'react'
 
 const ListExcerpt = () => (
 	<li>
-		title - author: description
+		username - wpm: date achieved
 	</li>
 )
 

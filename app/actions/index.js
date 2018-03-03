@@ -35,6 +35,22 @@ export const setAllScores = array => {
 }
 
 
+export const setUserScores = array => {
+	return {
+		type: 'SET_USER_SCORES',
+		userScores: array
+	}
+}
+
+
+export const setFilteredExcerpts = array => {
+	return {
+		type: 'SET_FILTERED_EXCERPTS',
+		filteredExcerpts: array
+	}
+}
+
+
 export const setSelectedExcerpt = object => {
 	return {
 		type: 'SET_SELECTED_EXCERPT',

@@ -5,7 +5,7 @@ import { createStore } from 'redux'
 import App from './components/App'
 import kiwiApp from './reducers'
  
-let store = createStore(kiwiApp)
+let store = createStore(kiwiApp, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__())
 
 render(
 	<Provider store={store}>

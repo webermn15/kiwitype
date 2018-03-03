@@ -1,11 +1,11 @@
 import React from 'react'
+import ListScore from './ListScore'
 import ListExcerpt from './ListExcerpt'
-import ListHighScore from './ListHighScore'
 
-const AsideList = ({asideList, onAsideClick}) => (
+const AsideList = ({asideList, asideFilter, onAsideClick}) => (
 	<ul>
-    {asideList.map(item => (
-      <ListExcerpt key={item.id} {...item} onClick={() => onAsideClick(item)} />
+    {asideList.map((item, i) => (
+      <ListScore key={i} {...item} onClick={() => onAsideClick(item)} />
     ))}
 	</ul>
 )
