@@ -42,8 +42,8 @@ const currentExcerpt = (state = {}, action) => {
 
 const allScores = (state = [], action) => {
 	switch (action.type) {
-		case 'GET_ALL_SCORES':
-			return ['new all scores']
+		case 'SET_ALL_SCORES':
+			return action.allScores
 		default:
 			return state
 	}
@@ -51,7 +51,7 @@ const allScores = (state = [], action) => {
 
 const userScores = (state = [], action) => {
 	switch (action.type) {
-		case 'GET_USER_SCORES':
+		case 'SET_USER_SCORES':
 			return ['new user scores']
 		default:
 			return state
@@ -60,7 +60,7 @@ const userScores = (state = [], action) => {
 
 const filteredExcerpts = (state = [], action) => {
 	switch (action.type) {
-		case 'GET_NEW_EXCERPTS':
+		case 'SET_NEW_EXCERPTS':
 			return ['new excerpts']
 		default:
 			return state

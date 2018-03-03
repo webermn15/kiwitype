@@ -22,9 +22,18 @@
 
 export const asideFilters = {
 	SHOW_EXCERPTS: 'SHOW_EXCERPTS',
-	SHOW_SCORES: 'SHOW_SCORES',
-	SHOW_MY_SCORES: 'SHOW_MY_SCORES'
+	SHOW_ALL_SCORES: 'SHOW_ALL_SCORES',
+	SHOW_USER_SCORES: 'SHOW_USER_SCORES'
 }
+
+
+export const setAllScores = array => {
+	return {
+		type: 'SET_ALL_SCORES',
+		allScores: array
+	}
+}
+
 
 export const setSelectedExcerpt = object => {
 	return {
@@ -40,3 +49,4 @@ export const setAsideFilter = filter => {
 		filter
 	}
 }
+

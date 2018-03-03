@@ -1,13 +1,13 @@
 import React from 'react'
 import AsideFilter from './AsideFilter'
-import AsideList from './AsideList'
+import AsideListContainer from '../../containers/AsideListContainer'
 import './aside.css'
 
 const Aside = () => (
 	<aside className="aside-container">
 		<AsideFilter />
-		<AsideList />
+		<AsideListContainer />
 	</aside>
 )
 
-export default Aside 
+export default Aside

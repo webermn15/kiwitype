@@ -2,10 +2,11 @@ import React from 'react'
 import ListExcerpt from './ListExcerpt'
 import ListHighScore from './ListHighScore'
 
-const AsideList = () => (
+const AsideList = ({asideList, onAsideClick}) => (
 	<ul>
-		map method here
-		<ListExcerpt />
+    {asideList.map(item => (
+      <ListExcerpt key={item.id} {...item} onClick={() => onAsideClick(item)} />
+    ))}
 	</ul>
 )
 

@@ -7,8 +7,8 @@ class Excerpt < ActiveRecord::Base
 		that = self
     Attempt.select("user_id, wpm, creation_date")
     	.where("excerpt_id = ?", that.id)
+    	.limit(10)
     	.order("wpm DESC")
-    	.includes(:users)
 	end
 
 end
