@@ -22,7 +22,7 @@
 import { combineReducers } from 'redux'
 import { asideFilters } from '../actions'
 
-const setUser = (state = {id: 0, username: 'Guest', lifetimeWpm: 0}, action) => {
+const userInfo = (state = {id: 0, username: 'Guest', lifetimeWpm: 0}, action) => {
 	switch (action.type) {
 		case 'SET_USER':
 			return Object.assign({}, state, action.user)
@@ -31,7 +31,7 @@ const setUser = (state = {id: 0, username: 'Guest', lifetimeWpm: 0}, action) => 
 	}
 }
 
-const selectExcerpt = (state = {}, action) => {
+const currentExcerpt = (state = {}, action) => {
 	switch (action.type) {
 		case 'SET_SELECTED_EXCERPT':
 			return Object.assign({}, state, action.object)
@@ -40,7 +40,7 @@ const selectExcerpt = (state = {}, action) => {
 	}
 }
 
-const populateAllScores = (state = [], action) => {
+const allScores = (state = [], action) => {
 	switch (action.type) {
 		case 'GET_ALL_SCORES':
 			return ['new all scores']
@@ -49,7 +49,7 @@ const populateAllScores = (state = [], action) => {
 	}
 }
 
-const populateUserScores = (state = [], action) => {
+const userScores = (state = [], action) => {
 	switch (action.type) {
 		case 'GET_USER_SCORES':
 			return ['new user scores']
@@ -58,7 +58,7 @@ const populateUserScores = (state = [], action) => {
 	}
 }
 
-const populateExcerpts = (state = [], action) => {
+const filteredExcerpts = (state = [], action) => {
 	switch (action.type) {
 		case 'GET_NEW_EXCERPTS':
 			return ['new excerpts']
@@ -77,11 +77,11 @@ const asideFilter = (state = 'SHOW_EXCERPTS', action) => {
 }
 
 const kiwiApp = combineReducers({
-	setUser,
-  selectExcerpt,
-  populateAllScores,
-	populateUserScores,
-	populateExcerpts,
+	userInfo,
+  currentExcerpt,
+  allScores,
+	userScores,
+	filteredExcerpts,
   asideFilter
 })
  

@@ -1,5 +1,12 @@
 class UserController < ApplicationController
 
+	get '/login' do 
+		resp = {
+			come_on: 'chill bro'
+		}.to_json
+	end
+
+
 	post '/register' do
 		@user = User.new
 		@user.username = params[:username]

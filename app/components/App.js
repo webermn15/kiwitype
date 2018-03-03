@@ -1,17 +1,12 @@
 import React, { Component } from 'react'
 import request from 'superagent'
+import { connect } from 'react-redux'
+import { setSelectedExcerpt } from '../actions'
 import Header from './header'
 import Content from './Content'
 
-export default class App extends Component<{}> {
-	constructor() {
-		super()
-
-		this.state = {
-
-		}
-	}
-	componentDidMount = () => {
+class App extends Component<{}> {
+	componentWillMount = () => {
 		request
 			.get('http://localhost:9292/excerpts/random')
 			.end((err, data) => {
@@ -20,8 +15,8 @@ export default class App extends Component<{}> {
 				}
 				else {
 					const parsed = JSON.parse(data.text)
-					parsed.active = true
 					console.log(parsed)
+					this.props.dispatch(setSelectedExcerpt(parsed))
 				}
 			})
 	}
@@ -34,3 +29,5 @@ export default class App extends Component<{}> {
 		)
 	}
 }
+
+export default connect()(App)

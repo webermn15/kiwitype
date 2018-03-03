@@ -22,6 +22,5 @@ CREATE TABLE attempts(
 	user_id INT REFERENCES users(id),
 	excerpt_id INT REFERENCES excerpts(id),
 	wpm NUMERIC,
-	errors TEXT[],
 	creation_date TIMESTAMP WITH TIME ZONE NOT NULL DEFAULT NOW()
 );

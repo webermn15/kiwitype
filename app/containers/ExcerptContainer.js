@@ -4,7 +4,7 @@ import Excerpt from '../components/main/Excerpt'
 
 const mapStateToProps = state => {
 	return {
-		selectedExcerpt: state.currentExcerpt
+		currentExcerpt: state.currentExcerpt
 	}
 }
 

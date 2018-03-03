@@ -26,16 +26,17 @@ export const asideFilters = {
 	SHOW_MY_SCORES: 'SHOW_MY_SCORES'
 }
 
-export const setAsideFilter = filter => {
-	return {
-		type: 'SET_ASIDE_FILTER',
-		filter
-	}
-}
-
 export const setSelectedExcerpt = object => {
 	return {
 		type: 'SET_SELECTED_EXCERPT',
 		object: object
+	}
+}
+
+
+export const setAsideFilter = filter => {
+	return {
+		type: 'SET_ASIDE_FILTER',
+		filter
 	}
 }
