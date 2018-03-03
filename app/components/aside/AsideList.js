@@ -4,9 +4,15 @@ import ListExcerpt from './ListExcerpt'
 
 const AsideList = ({asideList, asideFilter, onAsideClick}) => (
 	<ul>
-    {asideList.map((item, i) => (
-      <ListScore key={i} {...item} onClick={() => onAsideClick(item)} />
-    ))}
+    {asideFilter 
+    ? 
+    asideList.map((item, i) => (
+      <ListScore key={i} {...item} />
+    ))
+    :
+    asideList.map((item, i) => (
+      <ListExcerpt key={i} {...item} onClick={() => onAsideClick(item)} />
+    )) }
 	</ul>
 )
 

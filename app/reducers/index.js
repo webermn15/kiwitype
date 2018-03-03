@@ -52,7 +52,7 @@ const allScores = (state = [], action) => {
 const userScores = (state = [], action) => {
 	switch (action.type) {
 		case 'SET_USER_SCORES':
-			return ['new user scores']
+			return action.userScores
 		default:
 			return state
 	}
@@ -61,13 +61,13 @@ const userScores = (state = [], action) => {
 const filteredExcerpts = (state = [], action) => {
 	switch (action.type) {
 		case 'SET_NEW_EXCERPTS':
-			return ['new excerpts']
+			return action.filteredExcerpts
 		default:
 			return state
 	}
 }
 
-const asideFilter = (state = 'SHOW_EXCERPTS', action) => {
+const asideFilter = (state = 'SHOW_ALL_SCORES', action) => {
   switch (action.type) {
     case 'SET_ASIDE_FILTER':
       return action.filter
