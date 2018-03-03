@@ -20,7 +20,7 @@
 */
 
 
-export const asideFilters = {
+export const AsideFilters = {
 	SHOW_EXCERPTS: 'SHOW_EXCERPTS',
 	SHOW_ALL_SCORES: 'SHOW_ALL_SCORES',
 	SHOW_USER_SCORES: 'SHOW_USER_SCORES'
