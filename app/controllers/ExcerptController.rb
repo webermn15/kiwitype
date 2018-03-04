@@ -11,13 +11,11 @@ class ExcerptController < ApplicationController
 
 
 	get '/init' do 
-		@array = []
 
 		@excerpt = Excerpt.order("RANDOM()").first
 		@excerpts = Excerpt.order("id ASC").limit(10)
 
-		p @excerpts
-
+		@array = []
 		@allscores = @excerpt.all_high_scores().to_a
 		@allscores.map {|i| @array.push(i.user)}
 		allscores = @allscores.map(&:serializable_hash)
@@ -28,9 +26,27 @@ class ExcerptController < ApplicationController
 			j["username"] = array[index]["username"]
 		end
 
+		@userscores = 
+		Attempt.select("excerpt_id, user_id, wpm, creation_date")
+			.where("excerpt_id = ? AND user_id = ?", @excerpt.id, 2) #session[:user_id]
+			.order("wpm ASC").to_a
+
+		@arraytwo = []
+		@userscores.map {|k| @arraytwo.push(k.user)}
+		userscores = @userscores.map(&:serializable_hash)
+		arraytwo = @arraytwo.map(&:serializable_hash)
+
+		userscores.each_with_index do |l, ind|
+			l.delete("id")
+			l["username"] = arraytwo[ind]["username"]
+		end
+
+		p userscores
+
 		resp = {
 			excerpt: @excerpt,
 			allscores: allscores,
+			userscores: userscores,
 			filteredexcerpts: @excerpts
 		}.to_json
 	end

@@ -11,9 +11,12 @@
 		title: '',
 		description: '',
 		body: ''
-	}
-	allScores: [],
-	userScores: [],
+	},
+	scores: {
+		isFetching: false,
+		allScores: [],
+		userScores: []
+	},
 	filteredExcerpts: [],
 	asideFilter: 'SHOW_EXCERPTS'
 }
@@ -27,18 +30,13 @@ export const AsideFilters = {
 }
 
 
-export const setAllScores = array => {
+export const setAllScores = object => {
 	return {
 		type: 'SET_ALL_SCORES',
-		allScores: array
-	}
-}
-
-
-export const setUserScores = array => {
-	return {
-		type: 'SET_USER_SCORES',
-		userScores: array
+		scores: {
+			allScores: object.allScores,
+			userScores: object.userScores
+		}
 	}
 }
 
@@ -65,4 +63,43 @@ export const setAsideFilter = filter => {
 		filter
 	}
 }
+
+ 
+export const requestScores = id => {
+  return {
+    type: 'REQUEST_SCORES',
+    id: id
+  }
+}
+
+
+export const RECEIVE_SCORES = 'RECEIVE_SCORES'
+ 
+const receiveScores = (scores, json) => {
+  return {
+    type: RECEIVE_SCORES,
+    scores,
+    scores: json.data.children.map(child => child.data)
+  }
+}
+
+
+
+export const fetchPosts = (id) => {
+  return (dispatch) => {
+    dispatch(requestScores())
+    return 
+    	request
+    		.get("http://localhost:9292/attempts/"+id)
+    		.end((err, data) => {
+    			console.log(data)
+    		})
+  }
+}
+
+
+
+
+
+
 

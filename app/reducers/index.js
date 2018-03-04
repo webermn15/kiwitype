@@ -11,9 +11,12 @@
 		title: '',
 		description: '',
 		body: ''
-	}
-	allScores: [],
-	userScores: [],
+	},
+	scores: {
+		isFetching: false,
+		allScores: [],
+		userScores: []
+	},
 	filteredExcerpts: [],
 	asideFilter: 'SHOW_EXCERPTS'
 }
@@ -40,19 +43,19 @@ const currentExcerpt = (state = {}, action) => {
 	}
 }
 
-const allScores = (state = [], action) => {
+const scores = (state = {isFetching: false, allScores: [], userScores: []}, action) => {
 	switch (action.type) {
 		case 'SET_ALL_SCORES':
-			return action.allScores
-		default:
-			return state
-	}
-}
-
-const userScores = (state = [], action) => {
-	switch (action.type) {
-		case 'SET_USER_SCORES':
-			return action.userScores
+			return Object.assign({}, state, {
+				...state,
+				allScores: action.scores.allScores,
+				userScores: action.scores.userScores
+			})
+		case 'REQUEST_SCORES':
+			return Object.assign({}, state, {
+				...state,
+				isFetching: true
+			})
 		default:
 			return state
 	}
@@ -67,7 +70,7 @@ const filteredExcerpts = (state = [], action) => {
 	}
 }
 
-const asideFilter = (state = 'SHOW_ALL_SCORES', action) => {
+const asideFilter = (state = 'SHOW_EXCERPTS', action) => {
   switch (action.type) {
     case 'SET_ASIDE_FILTER':
       return action.filter
@@ -79,8 +82,7 @@ const asideFilter = (state = 'SHOW_ALL_SCORES', action) => {
 const kiwiApp = combineReducers({
 	userInfo,
   currentExcerpt,
-  allScores,
-	userScores,
+  scores,
 	filteredExcerpts,
   asideFilter
 })

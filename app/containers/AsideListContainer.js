@@ -5,9 +5,9 @@ import AsideList from '../components/aside/AsideList'
 const getAsideList = (state, filter) => {
   switch (filter) {
     case 'SHOW_ALL_SCORES':
-      return state.allScores
+      return state.scores.allScores
     case 'SHOW_USER_SCORES':
-      return state.userScores
+      return state.scores.userScores
     case 'SHOW_EXCERPTS':
     	return state.filteredExcerpts
     default:
