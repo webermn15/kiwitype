@@ -1,20 +1,23 @@
 class ExcerptController < ApplicationController
 
 	get '/all' do 
-
 		@excerpts = Excerpt.all 
 		resp = {
 			message: 'all good bro',
 			excerpts: @excerpts
 		}
 		resp.to_json
-
 	end
+
 
 	get '/init' do 
 		@array = []
 
 		@excerpt = Excerpt.order("RANDOM()").first
+		@excerpts = Excerpt.order("id ASC").limit(10)
+
+		p @excerpts
+
 		@allscores = @excerpt.all_high_scores().to_a
 		@allscores.map {|i| @array.push(i.user)}
 		allscores = @allscores.map(&:serializable_hash)
@@ -25,19 +28,13 @@ class ExcerptController < ApplicationController
 			j["username"] = array[index]["username"]
 		end
 
-		p allscores
-
 		resp = {
 			excerpt: @excerpt,
-			allscores: allscores
+			allscores: allscores,
+			filteredexcerpts: @excerpts
 		}.to_json
 	end
 
-	get '/random' do 
-		@excerpt = Excerpt.order("RANDOM()").first
-		p @excerpt
-		@excerpt.to_json
-	end
 
 	get '/allscores' do 
 		@excerpt = Excerpt.find(1)
@@ -51,6 +48,7 @@ class ExcerptController < ApplicationController
 			asdf: hs
 		}.to_json
 	end
+
 
 	get '/userscores' do 
 		'userscores'

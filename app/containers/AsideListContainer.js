@@ -15,16 +15,21 @@ const getAsideList = (state, filter) => {
   }
 }
 
-const mapStateToProps = state => {
+const getAsideFilter = (state) => {
+  return state.asideFilter == 'SHOW_EXCERPTS' ? true : false
+}
+
+
+const mapStateToProps = (state) => {
 	return {
 		asideList: getAsideList(state, state.asideFilter),
-    asideFilter: state.asideFilter
+    asideFilter: getAsideFilter(state)
 	}
 }
 
-const mapDispatchToProps = dispatch => {
+const mapDispatchToProps = (dispatch) => {
 	return {
-		onAsideClick: object => {
+		onExcerptClick: object => {
 			dispatch(setSelectedExcerpt(object))
 		}
 	}

@@ -11,4 +11,9 @@ class Excerpt < ActiveRecord::Base
     	.order("wpm DESC")
 	end
 
+	def user_high_scores
+		that = self
+		Attempt.select("user_id, wpm, creation_date")
+	end
+
 end

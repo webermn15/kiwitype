@@ -3,7 +3,6 @@ import { setAsideFilter } from '../actions'
 import FilterLink from '../components/aside/FilterLink'
 
 const mapStateToProps = (state, ownProps) => {
-	console.log(ownProps)
 	return {
 		active: ownProps.filter === state.asideFilter
 	}

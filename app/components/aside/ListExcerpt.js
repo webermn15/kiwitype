@@ -1,8 +1,14 @@
 import React from 'react'
 
-const ListExcerpt = () => (
-	<li>
-		username - wpm: date achieved
+const ListExcerpt = ({author, title, onClick}) => (
+	<li style={{cursor: 'pointer'}}>
+		<a 
+			onClick={e => 
+				{e.preventDefault()
+				onClick()}
+		}>
+			{author}, {title}
+		</a>
 	</li>
 )
 

@@ -60,7 +60,7 @@ const userScores = (state = [], action) => {
 
 const filteredExcerpts = (state = [], action) => {
 	switch (action.type) {
-		case 'SET_NEW_EXCERPTS':
+		case 'SET_FILTERED_EXCERPTS':
 			return action.filteredExcerpts
 		default:
 			return state

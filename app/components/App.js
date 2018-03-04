@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import request from 'superagent'
 import { connect } from 'react-redux'
-import { setSelectedExcerpt, setAllScores } from '../actions'
+import { setSelectedExcerpt, setAllScores, setUserScores, setFilteredExcerpts } from '../actions'
 import Header from './header'
 import Content from './Content'
 
@@ -15,9 +15,10 @@ class App extends Component<{}> {
 				}
 				else {
 					const parsed = JSON.parse(data.text)
-					console.log(parsed)
+					console.log(parsed, 'parse me daddy')
 					this.props.dispatch(setSelectedExcerpt(parsed.excerpt))
 					this.props.dispatch(setAllScores(parsed.allscores))
+					this.props.dispatch(setFilteredExcerpts(parsed.filteredexcerpts))
 				}
 			})
 	}
