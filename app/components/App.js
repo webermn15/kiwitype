@@ -15,9 +15,9 @@ class App extends Component<{}> {
 				}
 				else {
 					const parsed = JSON.parse(data.text)
-					console.log(parsed, 'parse me daddy')
+					// console.log(parsed, 'parse me daddy')
 					const scores = {allScores: parsed.allscores, userScores: parsed.userscores}
-					console.log(scores, 'scores baby')
+					// console.log(scores, 'scores baby')
 					this.props.dispatch(setSelectedExcerpt(parsed.excerpt))
 					this.props.dispatch(setAllScores(scores))
 					this.props.dispatch(setFilteredExcerpts(parsed.filteredexcerpts))

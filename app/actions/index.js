@@ -21,6 +21,7 @@
 	asideFilter: 'SHOW_EXCERPTS'
 }
 */
+import request from 'superagent'
 
 
 export const AsideFilters = {
@@ -65,35 +66,44 @@ export const setAsideFilter = filter => {
 }
 
  
-export const requestScores = id => {
+export const requestScores = () => {
   return {
-    type: 'REQUEST_SCORES',
-    id: id
+    type: 'REQUEST_SCORES'
   }
 }
 
 
 export const RECEIVE_SCORES = 'RECEIVE_SCORES'
  
-const receiveScores = (scores, json) => {
-  return {
-    type: RECEIVE_SCORES,
-    scores,
-    scores: json.data.children.map(child => child.data)
-  }
+const receiveScores = () => {
+	return {
+		type: 'RECEIVE_SCORES',
+		scores: {
+			allScores: object.allScores,
+			userScores: object.userScores
+		}
+	}
 }
 
 
 
-export const fetchPosts = (id) => {
+export const fetchScores = (id) => {
   return (dispatch) => {
     dispatch(requestScores())
     return 
     	request
-    		.get("http://localhost:9292/attempts/"+id)
+    		.get("http://localhost:9292/attempts/scores/"+id)
     		.end((err, data) => {
-    			console.log(data)
-    		})
+					if (err) {
+						console.log(err)
+					}
+					else {
+						const parsed = JSON.parse(data.text)
+						// console.log(parsed, 'parse me daddy')
+						const scores = {allScores: parsed.allscores, userScores: parsed.userscores}
+						dispatch(receiveScores(scores))
+					}
+			})
   }
 }
 

@@ -41,8 +41,6 @@ class ExcerptController < ApplicationController
 			l["username"] = arraytwo[ind]["username"]
 		end
 
-		p userscores
-
 		resp = {
 			excerpt: @excerpt,
 			allscores: allscores,

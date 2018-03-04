@@ -56,6 +56,12 @@ const scores = (state = {isFetching: false, allScores: [], userScores: []}, acti
 				...state,
 				isFetching: true
 			})
+		case 'RECEIVE_SCORES':
+			return Object.assign({}, state, {
+				isFetching: false,
+				allScores: action.scores.allScores,
+				userScores: action.scores.userScores
+			})
 		default:
 			return state
 	}
