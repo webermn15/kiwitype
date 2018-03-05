@@ -1,10 +1,20 @@
 import React from 'react'
 import ExcerptDetail from './ExcerptDetail'
 
-const Excerpt = ({currentExcerpt, dispatch}) => (
+const Excerpt = ({currentExcerpt, bodyArray, currentIndex}) => (
 	<div>
 		<ExcerptDetail id={currentExcerpt.id} author={currentExcerpt.author} title={currentExcerpt.title} description={currentExcerpt.description}/>
-		<div>{currentExcerpt.body}
+		<div>
+	    {bodyArray.map((char, i) => (
+	      <span 
+	      	key={i}
+	      	style={{
+					  textDecoration: i === currentIndex ? 'underline' : 'none',
+					  backgroundColor: i === currentIndex ? 'yellow' : 'none'
+					}}>
+	      	{char}
+	      </span>
+	    ))}
 		</div>
 	</div>
 )

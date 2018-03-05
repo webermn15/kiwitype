@@ -86,7 +86,6 @@ const receiveScores = object => {
 }
 
 
-
 export const fetchScores = (id) => {
   return (dispatch) => {
     dispatch(requestScores())
@@ -101,6 +100,9 @@ export const fetchScores = (id) => {
   }
 }
 
+
+
+// // thunk example
 // function logOutUser() {
 // 	return function(dispatch, getState) {
 // 		return axios.post('/logout').then(function() {

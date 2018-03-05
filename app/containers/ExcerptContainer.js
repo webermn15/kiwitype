@@ -1,6 +1,5 @@
 import { connect } from 'react-redux'
-import { setSelectedExcerpt } from '../actions'
-import Excerpt from '../components/main/Excerpt'
+import ExcerptInput from '../components/main/ExcerptInput'
 
 const mapStateToProps = state => {
 	return {
@@ -10,6 +9,6 @@ const mapStateToProps = state => {
 
 const ExcerptContainer = connect(
 	mapStateToProps
-)(Excerpt)
+)(ExcerptInput)
 
 export default ExcerptContainer
