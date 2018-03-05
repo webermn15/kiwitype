@@ -18,7 +18,9 @@
 		userScores: []
 	},
 	filteredExcerpts: [],
-	asideFilter: 'SHOW_EXCERPTS'
+	asideFilter: 'SHOW_EXCERPTS',
+	showLoginModal: false,
+	showStatsModal: false
 }
 */
 
@@ -85,12 +87,32 @@ const asideFilter = (state = 'SHOW_EXCERPTS', action) => {
   }
 }
 
+const showLoginModal = (state = false, action) => {
+	switch (action.type) {
+		case 'TOGGLE_LOGIN':
+			return !state
+		default:
+			return state
+	}
+}
+
+const showStatsModal = (state = false, action) => {
+	switch (action.type) {
+		case 'TOGGLE_STATS':
+			return !state
+		default:
+			return state
+	}
+}
+
 const kiwiApp = combineReducers({
 	userInfo,
   currentExcerpt,
   scores,
 	filteredExcerpts,
-  asideFilter
+  asideFilter,
+  showLoginModal,
+  showStatsModal
 })
  
 export default kiwiApp

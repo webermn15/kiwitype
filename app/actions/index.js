@@ -31,6 +31,28 @@ export const AsideFilters = {
 }
 
 
+export const toggleLoginModal = () => {
+	return {
+		type: 'TOGGLE_LOGIN'
+	}
+}
+
+
+export const toggleStatsModal = () => {
+	return {
+		type: 'TOGGLE_STATS'
+	}
+}
+
+
+export const setUserInfo = info => {
+	return {
+		type: 'SET_USER',
+		user: info
+	}
+}
+
+
 export const setAllScores = object => {
 	return {
 		type: 'SET_ALL_SCORES',
@@ -72,8 +94,6 @@ export const requestScores = () => {
   }
 }
 
-
-export const RECEIVE_SCORES = 'RECEIVE_SCORES'
  
 const receiveScores = object => {
 	return {
@@ -102,6 +122,9 @@ export const fetchScores = (id) => {
 
 
 
+
+
+
 // // thunk example
 // function logOutUser() {
 // 	return function(dispatch, getState) {
@@ -112,8 +135,3 @@ export const fetchScores = (id) => {
 // 		});
 // 	}
 // }
-
-
-
-
-

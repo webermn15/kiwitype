@@ -3,7 +3,7 @@ class AttemptController < ApplicationController
 	post '/new' do 
 		p params
 		# @attempt = Attempt.new
-		# @attempt.user_id = params[:user_id]
+		# @attempt.user_id = session[:user_id]
 		# @attempt.excerpt_id = params[:excerpt_id]
 		# @attempt.wpm = params[:wpm]
 		# @attempt.save
@@ -15,7 +15,7 @@ class AttemptController < ApplicationController
 	get '/scores/:id' do 
 		@allscores = 
 		Attempt.select("excerpt_id, user_id, wpm, creation_date")
-			.where("excerpt_id = ?", params["id"]) #session[:user_id]
+			.where("excerpt_id = ?", params["id"]) 
 			.order("wpm ASC").to_a
 
 		@array = []
