@@ -5,18 +5,16 @@ import { createStore, applyMiddleware, compose } from 'redux'
 import thunk from 'redux-thunk'
 import App from './components/App'
 import kiwiApp from './reducers'
-import { fetchScores } from './actions'
 
-const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+const middleware = applyMiddleware(thunk)
  
 let store = createStore(
 	kiwiApp, 
-	composeEnhancers(
-		applyMiddleware(thunk)
+	compose(
+		middleware,
+		window.devToolsExtension ? window.devToolsExtension() : f => f
 	)
 )
-
-store.dispatch(fetchScores(1))
 
 render(
 	<Provider store={store}>

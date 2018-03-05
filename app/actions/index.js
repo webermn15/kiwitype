@@ -75,12 +75,12 @@ export const requestScores = () => {
 
 export const RECEIVE_SCORES = 'RECEIVE_SCORES'
  
-const receiveScores = () => {
+const receiveScores = object => {
 	return {
 		type: 'RECEIVE_SCORES',
 		scores: {
-			allScores: object.allScores,
-			userScores: object.userScores
+			allScores: object.allscores,
+			userScores: object.userscores
 		}
 	}
 }
@@ -90,24 +90,26 @@ const receiveScores = () => {
 export const fetchScores = (id) => {
   return (dispatch) => {
     dispatch(requestScores())
-    return 
-    	request
-    		.get("http://localhost:9292/attempts/scores/"+id)
-    		.end((err, data) => {
-					if (err) {
-						console.log(err)
-					}
-					else {
-						const parsed = JSON.parse(data.text)
-						// console.log(parsed, 'parse me daddy')
-						const scores = {allScores: parsed.allscores, userScores: parsed.userscores}
-						dispatch(receiveScores(scores))
-					}
-			})
+  	request
+  		.get("http://localhost:9292/attempts/scores/"+id)
+  		.type('json')
+  		.end((err,res) => {
+  			const parsed = JSON.parse(res.text)
+  			console.log(parsed)
+  			dispatch(receiveScores(parsed))
+  		})
   }
 }
 
-
+// function logOutUser() {
+// 	return function(dispatch, getState) {
+// 		return axios.post('/logout').then(function() {
+// 			// pretend we declared an action creator
+// 			// called 'userLoggedOut', and now we can dispatch it
+// 			dispatch(userLoggedOut());
+// 		});
+// 	}
+// }
 
 
 

@@ -1,5 +1,5 @@
 import { connect } from 'react-redux'
-import { setSelectedExcerpt } from '../actions'
+import { setSelectedExcerpt, fetchScores } from '../actions'
 import AsideList from '../components/aside/AsideList'
 
 const getAsideList = (state, filter) => {
@@ -31,6 +31,7 @@ const mapDispatchToProps = (dispatch) => {
 	return {
 		onExcerptClick: object => {
 			dispatch(setSelectedExcerpt(object))
+      dispatch(fetchScores(object.id))
 		}
 	}
 }

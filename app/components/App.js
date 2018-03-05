@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import request from 'superagent'
 import { connect } from 'react-redux'
-import { setSelectedExcerpt, setAllScores, setFilteredExcerpts } from '../actions'
+import { setSelectedExcerpt, setAllScores, setFilteredExcerpts, fetchScores } from '../actions'
 import Header from './header'
 import Content from './Content'
 
