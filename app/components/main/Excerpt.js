@@ -10,7 +10,7 @@ const Excerpt = ({currentExcerpt, bodyArray, currentIndex}) => (
 	      	key={i}
 	      	style={{
 					  textDecoration: i === currentIndex ? 'underline' : 'none',
-					  backgroundColor: i === currentIndex ? 'yellow' : 'none'
+					  backgroundColor: i === currentIndex ? 'yellow' : null
 					}}>
 	      	{char}
 	      </span>
