@@ -17,11 +17,17 @@
 		allScores: [],
 		userScores: []
 	},
+	lastAttempt: {
+		wpm: 0,
+		title: '',
+		isPosting: false
+	}
 	filteredExcerpts: [],
 	asideFilter: 'SHOW_EXCERPTS',
 	showLoginModal: false,
 	registering: false,
-	showStatsModal: false
+	showStatsModal: false,
+	showResultModal: false
 }
 */
 
@@ -64,6 +70,31 @@ const scores = (state = {isFetching: false, allScores: [], userScores: []}, acti
 				isFetching: false,
 				allScores: action.scores.allScores,
 				userScores: action.scores.userScores
+			})
+		default:
+			return state
+	}
+}
+
+const mostRecentAttempt = (state = {wpm: 0, title: '', isPosting: false, hasPosted: false}, action) => {
+	switch (action.type) {
+		case 'RECORD_WPM_LOCALLY':
+			return Object.assign({}, state, {
+				...state,
+				wpm: action.wpm,
+				title: action.title,
+				isPosting: false,
+				hasPosted: true
+			})
+		case 'RECORD_WPM_SERVER':
+			return Object.assign({}, state, {
+				...state,
+				isPosting: true
+			})
+		case 'CLOSE_RESULT':
+			return Object.assign({}, state, {
+				...state,
+				hasPosted: false
 			})
 		default:
 			return state
@@ -119,6 +150,7 @@ const kiwiApp = combineReducers({
 	userInfo,
   currentExcerpt,
   scores,
+  mostRecentAttempt,
 	filteredExcerpts,
   asideFilter,
   showLoginModal,

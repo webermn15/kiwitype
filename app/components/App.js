@@ -4,6 +4,7 @@ import { connect } from 'react-redux'
 import { setSelectedExcerpt, setAllScores, setFilteredExcerpts, fetchScores } from '../actions'
 import Header from './header'
 import Content from './Content'
+import ScoreModalContainer from '../containers/ScoreModalContainer'
 
 class App extends Component<{}> {
 	componentWillMount = () => {
@@ -29,9 +30,12 @@ class App extends Component<{}> {
 			<div>
 				<Header />
 				<Content />
+				<ScoreModalContainer />
 			</div>
 		)
 	}
 }
+
+
 
 export default connect()(App)

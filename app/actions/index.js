@@ -17,10 +17,20 @@
 		allScores: [],
 		userScores: []
 	},
+	lastAttempt: {
+		wpm: 0,
+		title: '',
+		isPosting: false
+	}
 	filteredExcerpts: [],
-	asideFilter: 'SHOW_EXCERPTS'
+	asideFilter: 'SHOW_EXCERPTS',
+	showLoginModal: false,
+	registering: false,
+	showStatsModal: false,
+	showResultModal: false
 }
 */
+
 import request from 'superagent'
 
 
@@ -125,6 +135,45 @@ export const fetchScores = (id) => {
   			dispatch(receiveScores(parsed))
   		})
   }
+}
+
+
+const postResult = () => {
+	return {
+		type: 'RECORD_WPM_SERVER'
+	}
+}
+
+
+export const recordWpm = (wpm, title) => {
+	return {
+		type: 'RECORD_WPM_LOCALLY',
+		wpm: wpm,
+		title: title
+	}
+}
+
+
+export const closeResult = () => {
+	return {
+		type: 'CLOSE_RESULT'
+	}
+}
+
+
+export const postScore = (excerptId, wpm) => {
+	return (dispatch) => {
+		dispatch(postResult())
+		request
+			.post('http://localhost:9292/attempts/new')
+			.type('form')
+			.send({excerpt_id: excerptId, wpm: wpm})
+			.end((err, res) => {
+				const parsed = JSON.parse(res.text)
+				console.log(parsed, 'postscore action creator')
+				dispatch(recordWpm(parsed.wpm, parsed.title))
+			})
+	}
 }
 
 

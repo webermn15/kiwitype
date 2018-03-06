@@ -1,7 +1,9 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
+import { postScore } from '../../actions'
 import request from 'superagent'
-import Excerpt from './Excerpt'
 import './main.css'
+import Excerpt from './Excerpt'
 
 const initialState = {
 	timer: null,
@@ -34,16 +36,15 @@ class ExcerptInput extends Component<{}> {
         let timer = setInterval(this.tick, 500)
         this.setState({timer: timer})
         clearInterval(countdownTimer)
+        this.inputVal.focus()
       }
       this.setState({countdown: this.state.countdown - 1})
     }, 1000)
-
-
   }
 
   clearTimer = () => {
   	clearInterval(this.state.timer)
-  	this.setState({timer: null, counter: 0})
+  	this.setState({timer: null, counter: 0, countdown: 3})
   }
 
   tick = () => {
@@ -58,7 +59,6 @@ class ExcerptInput extends Component<{}> {
   }
 
   inputMatch = () => {
-  	console.log('match')
   	this.setState({charIndex: this.state.charIndex + 1, error: false})
   	if (this.inputVal.value.length > 5) {
   		this.inputVal.value = this.inputVal.value.substring(1)
@@ -68,13 +68,8 @@ class ExcerptInput extends Component<{}> {
     	this.clearTimer()
     	this.inputVal.value = ''
   		this.setState({...this.state, initialState})
-  		request
-  			.post('http://localhost:9292/attempts/new')
-  			.type('form')
-  			.send({excerpt_id: this.props.currentExcerpt.id, wpm: wpm})
-  			.end((err, res) => {
-  				console.log(res)
-  			})
+
+      this.props.dispatch(postScore(this.props.currentExcerpt.id, wpm))
   	}
   }
 
@@ -99,14 +94,14 @@ class ExcerptInput extends Component<{}> {
 					placeholder="user input goes here" 
 					ref={character => this.inputVal = character}
 				/>
-				<button onClick={() => {!this.state.timer ? this.startTimer() : this.clearTimer()}}>{this.state.timer ? 'STOP!' : 'Start!'}</button>
+				<button onClick={() => {!this.state.timer ? this.startTimer() : this.clearTimer()}}>{this.state.timer ? 'Reset?' : 'Start!'}</button>
         <span style={{fontSize: '32px', margin: '2px'}}>{this.state.countdown}</span>
 			</div>
 		)
 	}
 }
 
-export default ExcerptInput
+export default connect()(ExcerptInput)
 
   		
 

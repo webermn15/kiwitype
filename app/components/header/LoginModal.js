@@ -7,7 +7,7 @@ const LoginModal = ({registering, dispatch}) => (
 		<div>{!registering ? 'Log in to your account!' : 'Create an account!'}</div>
 		<input type="text" placeholder="Username"/>
 		<input type="password" placeholder="Password"/>
-		<button>Log In</button>
+		<button>{!registering ? "Log in" : "Register"}</button>
 		<div>
 			<a 
 				href="#" 
