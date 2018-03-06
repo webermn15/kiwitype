@@ -44,7 +44,7 @@ class ExcerptInput extends Component<{}> {
 
   clearTimer = () => {
   	clearInterval(this.state.timer)
-  	this.setState({timer: null, counter: 0, countdown: 3})
+  	this.setState({timer: null, counter: 0, countdown: 3, charIndex: 0})
   }
 
   tick = () => {

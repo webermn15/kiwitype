@@ -3,7 +3,8 @@
 	userInfo: {
 		id: 0,
 		username: '',
-		lifetimeWpm: 0
+		lifetimeWpm: 0,
+		showInfo: false
 	},
 	currentExcerpt: {
 		id: 0,
@@ -66,6 +67,13 @@ export const setUserInfo = info => {
 	return {
 		type: 'SET_USER',
 		user: info
+	}
+}
+
+
+export const toggleInfo = () => {
+	return {
+		type: 'TOGGLE_INFO'
 	}
 }
 

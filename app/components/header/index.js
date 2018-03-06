@@ -1,6 +1,7 @@
 import React from 'react'
 import './header.css'
 import LoginContainer from '../../containers/LoginContainer'
+import UserInfoContainer from '../../containers/UserInfoContainer'
 
 const Header = () => (
 	<div className="header">
@@ -9,7 +10,7 @@ const Header = () => (
 				<div>KiwiType Logo</div>
 				<LoginContainer />
 			</div>
-			<div className="nav-inner">{'Username'} dropdown</div>
+			<UserInfoContainer />
 		</nav>
 	</div>
 )
