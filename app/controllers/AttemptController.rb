@@ -1,14 +1,15 @@
 class AttemptController < ApplicationController
 
 	post '/new' do 
-		p params
+		wpm = params["wpm"].to_f.round(2)
+		p wpm
 		# @attempt = Attempt.new
 		# @attempt.user_id = session[:user_id]
 		# @attempt.excerpt_id = params[:excerpt_id]
 		# @attempt.wpm = params[:wpm]
 		# @attempt.save
 		resp = {
-			whatever: 'ok'
+			wpm: wpm
 		}.to_json
 	end
 

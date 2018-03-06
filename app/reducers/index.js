@@ -20,6 +20,7 @@
 	filteredExcerpts: [],
 	asideFilter: 'SHOW_EXCERPTS',
 	showLoginModal: false,
+	registering: false,
 	showStatsModal: false
 }
 */
@@ -96,6 +97,15 @@ const showLoginModal = (state = false, action) => {
 	}
 }
 
+const registering = (state = false, action) => {
+	switch (action.type) {
+		case 'TOGGLE_REGISTER':
+			return !state
+		default:
+			return state
+	}
+}
+
 const showStatsModal = (state = false, action) => {
 	switch (action.type) {
 		case 'TOGGLE_STATS':
@@ -112,6 +122,7 @@ const kiwiApp = combineReducers({
 	filteredExcerpts,
   asideFilter,
   showLoginModal,
+  registering,
   showStatsModal
 })
  

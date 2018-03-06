@@ -7,7 +7,7 @@ const initialState = {
 	timer: null,
 	counter: 0,
 	charIndex: 0,
-	countdown: 0,
+	countdown: 3,
 	error: false
 }
 
@@ -29,8 +29,16 @@ class ExcerptInput extends Component<{}> {
   }
 
   startTimer = () => {
-  	let timer = setInterval(this.tick, 500)
-  	this.setState({timer: timer})
+    let countdownTimer = setInterval(() => {
+      if (this.state.countdown === 1) {
+        let timer = setInterval(this.tick, 500)
+        this.setState({timer: timer})
+        clearInterval(countdownTimer)
+      }
+      this.setState({countdown: this.state.countdown - 1})
+    }, 1000)
+
+
   }
 
   clearTimer = () => {
@@ -91,7 +99,8 @@ class ExcerptInput extends Component<{}> {
 					placeholder="user input goes here" 
 					ref={character => this.inputVal = character}
 				/>
-				<button onClick={() => {!this.state.timer ? this.startTimer() : this.clearTimer()}}>Start?</button>
+				<button onClick={() => {!this.state.timer ? this.startTimer() : this.clearTimer()}}>{this.state.timer ? 'STOP!' : 'Start!'}</button>
+        <span style={{fontSize: '32px', margin: '2px'}}>{this.state.countdown}</span>
 			</div>
 		)
 	}

@@ -38,6 +38,13 @@ export const toggleLoginModal = () => {
 }
 
 
+export const toggleRegister = () => {
+	return {
+		type: 'TOGGLE_REGISTER'
+	}
+}
+
+
 export const toggleStatsModal = () => {
 	return {
 		type: 'TOGGLE_STATS'

@@ -4,7 +4,8 @@ import Login from '../components/header/Login'
 
 const mapStateToProps = state => {
 	return {
-		showLoginModal: state.showLoginModal
+		showLoginModal: state.showLoginModal,
+		registering: state.registering
 	}
 }
 
