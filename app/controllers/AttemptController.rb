@@ -1,22 +1,26 @@
 class AttemptController < ApplicationController
 
+
+
 	post '/new' do 
 		wpm = params["wpm"].to_f.round(2)
 
 		excerpt = Excerpt.where("id = ?", params["excerpt_id"])
 		title = excerpt[0].title
 
-		# @attempt = Attempt.new
-		# @attempt.user_id = session[:user_id]
-		# @attempt.excerpt_id = params[:excerpt_id]
-		# @attempt.wpm = params[:wpm]
-		# @attempt.save
+		@attempt = Attempt.new
+		@attempt.user_id = session[:user_id]
+		@attempt.excerpt_id = params[:excerpt_id]
+		@attempt.wpm = params[:wpm]
+		@attempt.save
 
 		resp = {
 			wpm: wpm,
 			title: title
 		}.to_json
 	end
+
+
 
 	get '/scores/:id' do 
 		@allscores = 
@@ -54,5 +58,7 @@ class AttemptController < ApplicationController
 			userscores: userscores
 		}.to_json
 	end
+
+
 
 end

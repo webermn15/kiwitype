@@ -1,7 +1,7 @@
 import React from 'react' 
 
-const Logout = () => (
-	<div className="login-button">Logout</div>
+const Logout = ({requestLogout}) => (
+	<div onClick={() => requestLogout()} className="login-button">Logout</div>
 )
 
 export default Logout

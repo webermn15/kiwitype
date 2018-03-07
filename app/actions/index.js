@@ -7,7 +7,8 @@
 		showInfo: false,
 		authenticating: false,
 		authenticated: false,
-		session_token: null
+		session_token: null,
+		errorMsg: null
 	},
 	currentExcerpt: {
 		id: 0,
@@ -109,15 +110,23 @@ export const setAsideFilter = filter => {
 
 
 // USER LOGIN / REGISTER
-export const getLoginInfo = loginParams => {
+export const getLoginInfo = data => {
 	return (dispatch) => {
 		dispatch(requestLogin())
 		request
 			.post("http://localhost:9292/users/login")
 			.type('form')
-			.send(loginParams)
+			.send(data)
 			.end((err, res) => {
-				console.log(res)
+				const parsed = JSON.parse(res.text)
+				console.log(parsed)
+				if (parsed.success) {
+					dispatch(setUserInfo(parsed.user))
+					dispatch(toggleLoginModal())
+				}
+				else {
+					dispatch(loginFailed(parsed.message))
+				}
 			})
 	}
 }
@@ -130,9 +139,47 @@ const requestLogin = () => {
 }
 
 
+const loginFailed = errorMsg => {
+	return {
+		type: 'LOGIN_FAILED',
+		message: errorMsg
+	}
+}
+
+
+const logUserOut = () => {
+	return {
+		type: 'REQUEST_LOGOUT'
+	}
+}
+
+
+const userIsLoggedOut = () => {
+	localStorage.removeItem('kiwiTypeUser')
+	return {
+		type: 'LOGOUT_USER'
+	}
+}
+
+
+export const requestLogout = () => {
+	return (dispatch) => {
+		dispatch(logUserOut())
+		request
+			.get('http://localhost:9292/users/logout')
+			.end((err, res) => {
+				const parsed = JSON.parse(res.text)
+				if (parsed.success) {
+					dispatch(userIsLoggedOut())
+				}
+			})
+	}
+}
+
 
 export const setUserInfo = data => {
-	localStore.setItem(user, data.session_token)
+	localStorage.setItem('kiwiTypeUser', data.session_token)
+	console.log(data)
 	return {
 		type: 'SET_USER',
 		data
@@ -144,12 +191,25 @@ export const getUserInfoFromToken = token => {
   return (dispatch) => {
     dispatch(requestLogin())
   	request
-  		.post("http://localhost:9292/users/token/"+token)
-  		.type('json')
+  		.get("http://localhost:9292/users/token/"+token)
   		.end((err,res) => {
-  			console.log(res)
+				const parsed = JSON.parse(res.text)
+				console.log(parsed)
+				if (parsed.success) {
+					dispatch(setUserInfo(parsed.user))
+				}
+				else {
+					console.log(parsed)
+				}
   		})
   }
+}
+
+
+export const registerNewUser = data => {
+	return (dispatch) => {
+		dispatch
+	}
 }
 
 

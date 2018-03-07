@@ -7,7 +7,8 @@
 		showInfo: false,
 		authenticating: false,
 		authenticated: false,
-		session_token: null
+		session_token: null,
+		errorMsg: null
 	},
 	currentExcerpt: {
 		id: 0,
@@ -38,27 +39,30 @@
 import { combineReducers } from 'redux'
 import { asideFilters } from '../actions'
 
-const userInfo = (state = 
-	{
+const initialUserState = {
 		id: 0, 
 		username: 'Guest', 
 		lifetimeWpm: 0, 
 		showInfo: false,
 		authenticating: false,
 		authenticated: false,
+		errorMsg: null,
+		loggingOut: false,
 		session_token: null
-	}, 
-	action) => {
+	}
+
+const userInfo = (state = initialUserState, action) => {
 	switch (action.type) {
 		case 'SET_USER':
 			return Object.assign({}, state, {
 				...state,
 				authenticated: true,
 				authenticating: false,
-				id: data.id,
-				username: data.username,
-				lifetimeWpm: data.lifetimeWpm,
-				session_token: data.session_token
+				errorMsg: null,
+				id: action.data.id,
+				username: action.data.username,
+				lifetimeWpm: action.data.lifetimeWpm,
+				session_token: action.data.session_token
 			})
 		case 'TOGGLE_INFO':
 			return Object.assign({}, state, {
@@ -68,8 +72,23 @@ const userInfo = (state =
 		case 'REQUEST_LOGIN':
 			return Object.assign({}, state, {
 				...state,
-				authenticating: true
+				authenticating: true,
+				errorMsg: null
 			})
+		case 'LOGIN_FAILED':
+			return Object.assign({}, state, {
+				...state,
+				authenticating: false,
+				errorMsg: action.message
+			})
+		case 'REQUEST_LOGOUT':
+			return Object.assign({}, state, {
+				...state,
+				loggingOut: true
+			})
+		case 'LOGOUT_USER':
+			return Object.assign({}, state, 
+				initialUserState)
 		default:
 			return state
 	}

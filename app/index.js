@@ -7,12 +7,6 @@ import App from './components/App'
 import kiwiApp from './reducers'
 import { getUserInfoFromToken } from './actions'
 
-const user = localStorage.getItem('user');
-console.log(user)
-// if(user) {
-//   store.dispatch(user);
-// }
-
 const middleware = applyMiddleware(thunk)
  
 let store = createStore(
@@ -22,6 +16,12 @@ let store = createStore(
 		window.devToolsExtension ? window.devToolsExtension() : f => f
 	)
 )
+
+const user = localStorage.getItem('kiwiTypeUser');
+console.log(user)
+if (user) {
+  store.dispatch(getUserInfoFromToken(user));
+}
 
 render(
 	<Provider store={store}>

@@ -1,12 +1,14 @@
 import { connect } from 'react-redux'
-import { toggleLoginModal, toggleRegister, getLoginInfo } from '../actions'
+import { toggleLoginModal, toggleRegister, getLoginInfo, requestLogout } from '../actions'
 import Login from '../components/header/Login'
 
 const mapStateToProps = state => {
 	return {
 		showLoginModal: state.showLoginModal,
 		registering: state.registering,
-		loggedIn: state.userInfo.session_token
+		authenticating: state.userInfo.authenticating,
+		loggedIn: state.userInfo.session_token,
+		errorMsg: state.userInfo.errorMsg
 	}
 }
 
@@ -17,10 +19,12 @@ const mapDispatchToProps = dispatch => {
 		},
 		requestLogin: (loginParams) => {
 			dispatch(getLoginInfo(loginParams))
-			dispatch(toggleLoginModal())
 		},
 		toggleRegister: () => {
 			dispatch(toggleRegister())
+		},
+		requestLogout: () => {
+			dispatch(requestLogout())
 		}
 	}
 }

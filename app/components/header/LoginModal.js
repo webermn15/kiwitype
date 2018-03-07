@@ -25,18 +25,18 @@ class LoginModal extends Component<{}> {
 				this.props.requestLogin({username: this.inputUser.value, password: this.inputPass.value})
 			}
 			else {
-				this.inputPass.value = ''
-				this.inputUser.value = ''
 				this.inputUser.focus()
 				this.setState({errorAlert: true})
 			}
+			this.inputPass.value = ''
+			this.inputUser.value = ''	
 		})
 	}
 
 	render() {
 		return(
 			<div className="login-modal">
-				<div>{this.state.errorAlert ? 'Username or password missing' : !this.props.registering ? 'Log in to your account!' : 'Create an account!'}</div>
+				<div>{this.props.authenticating ? 'Logging in...' : this.state.errorAlert ? 'Username or password missing' : this.props.errorMsg}</div>
 				<form 
 					className="login-form"
 					onSubmit={(e) => {

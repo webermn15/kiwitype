@@ -1,5 +1,6 @@
 import { connect } from 'react-redux'
 import UserInfo from '../components/header/UserInfo'
+import { toggleInfo } from '../actions'
 
 const mapStateToProps = state => {
 	return {
@@ -7,8 +8,17 @@ const mapStateToProps = state => {
 	}
 }
 
+const mapDispatchToProps = dispatch => {
+	return {
+		toggleInfo: () => {
+			dispatch(toggleInfo())
+		}
+	}
+}
+
 const UserInfoContainer = connect(
-	mapStateToProps
+	mapStateToProps,
+	mapDispatchToProps
 )(UserInfo)
 
 export default UserInfoContainer
