@@ -17,6 +17,7 @@ const mapDispatchToProps = dispatch => {
 		},
 		requestLogin: (loginParams) => {
 			dispatch(getLoginInfo(loginParams))
+			dispatch(toggleLoginModal())
 		},
 		toggleRegister: () => {
 			dispatch(toggleRegister())

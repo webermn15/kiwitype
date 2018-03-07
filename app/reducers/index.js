@@ -68,8 +68,7 @@ const userInfo = (state =
 		case 'REQUEST_LOGIN':
 			return Object.assign({}, state, {
 				...state,
-				authenticating: true,
-				showInfo: false
+				authenticating: true
 			})
 		default:
 			return state
