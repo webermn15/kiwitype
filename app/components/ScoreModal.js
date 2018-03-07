@@ -7,7 +7,6 @@ const ScoreModal = ({mostRecentAttempt, dispatch}) => {
 		return(
 			<div 
 				className="score-modal"
-				onClick={() => dispatch(closeResult())}
 			>
 				<ScoreModalInner 
 					wpm={mostRecentAttempt.wpm} 

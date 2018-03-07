@@ -4,7 +4,10 @@
 		id: 0,
 		username: '',
 		lifetimeWpm: 0,
-		showInfo: false
+		showInfo: false,
+		authenticating: false,
+		authenticated: false,
+		session_token: null
 	},
 	currentExcerpt: {
 		id: 0,
@@ -35,14 +38,38 @@
 import { combineReducers } from 'redux'
 import { asideFilters } from '../actions'
 
-const userInfo = (state = {id: 0, username: 'Guest', lifetimeWpm: 0, showInfo: false}, action) => {
+const userInfo = (state = 
+	{
+		id: 0, 
+		username: 'Guest', 
+		lifetimeWpm: 0, 
+		showInfo: false,
+		authenticating: false,
+		authenticated: false,
+		session_token: null
+	}, 
+	action) => {
 	switch (action.type) {
 		case 'SET_USER':
-			return Object.assign({}, state, action.user)
+			return Object.assign({}, state, {
+				...state,
+				authenticated: true,
+				authenticating: false,
+				id: data.id,
+				username: data.username,
+				lifetimeWpm: data.lifetimeWpm,
+				session_token: data.session_token
+			})
 		case 'TOGGLE_INFO':
 			return Object.assign({}, state, {
 				...state,
 				showInfo: !state.showInfo
+			})
+		case 'REQUEST_LOGIN':
+			return Object.assign({}, state, {
+				...state,
+				authenticating: true,
+				showInfo: false
 			})
 		default:
 			return state

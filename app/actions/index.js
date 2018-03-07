@@ -4,7 +4,10 @@
 		id: 0,
 		username: '',
 		lifetimeWpm: 0,
-		showInfo: false
+		showInfo: false,
+		authenticating: false,
+		authenticated: false,
+		session_token: null
 	},
 	currentExcerpt: {
 		id: 0,
@@ -34,7 +37,7 @@
 
 import request from 'superagent'
 
-
+// TOGGLE & SCORE LOGIC
 export const AsideFilters = {
 	SHOW_EXCERPTS: 'SHOW_EXCERPTS',
 	SHOW_ALL_SCORES: 'SHOW_ALL_SCORES',
@@ -59,14 +62,6 @@ export const toggleRegister = () => {
 export const toggleStatsModal = () => {
 	return {
 		type: 'TOGGLE_STATS'
-	}
-}
-
-
-export const setUserInfo = info => {
-	return {
-		type: 'SET_USER',
-		user: info
 	}
 }
 
@@ -112,7 +107,53 @@ export const setAsideFilter = filter => {
 	}
 }
 
- 
+
+// USER LOGIN / REGISTER
+export const getLoginInfo = loginParams => {
+	return (dispatch) => {
+		dispatch(requestLogin())
+		request
+			.post("http://localhost:9292/users/login")
+			.type('form')
+			.send(loginParams)
+			.end((err, res) => {
+				console.log(res)
+			})
+	}
+}
+
+
+const requestLogin = () => {
+	return {
+		type: 'REQUEST_LOGIN'
+	}
+}
+
+
+
+export const setUserInfo = data => {
+	localStore.setItem(user, data.session_token)
+	return {
+		type: 'SET_USER',
+		data
+	}
+}
+
+
+export const getUserInfoFromToken = token => {
+  return (dispatch) => {
+    dispatch(requestLogin())
+  	request
+  		.post("http://localhost:9292/users/token/"+token)
+  		.type('json')
+  		.end((err,res) => {
+  			console.log(res)
+  		})
+  }
+}
+
+
+// SCORE LOGIC & SENDING
 export const requestScores = () => {
   return {
     type: 'REQUEST_SCORES'
@@ -177,8 +218,8 @@ export const postScore = (excerptId, wpm) => {
 			.type('form')
 			.send({excerpt_id: excerptId, wpm: wpm})
 			.end((err, res) => {
+				console.log(res)
 				const parsed = JSON.parse(res.text)
-				console.log(parsed, 'postscore action creator')
 				dispatch(recordWpm(parsed.wpm, parsed.title))
 			})
 	}
@@ -187,15 +228,3 @@ export const postScore = (excerptId, wpm) => {
 
 
 
-
-
-// // thunk example
-// function logOutUser() {
-// 	return function(dispatch, getState) {
-// 		return axios.post('/logout').then(function() {
-// 			// pretend we declared an action creator
-// 			// called 'userLoggedOut', and now we can dispatch it
-// 			dispatch(userLoggedOut());
-// 		});
-// 	}
-// }

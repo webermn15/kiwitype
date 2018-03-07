@@ -1,11 +1,12 @@
 import React from 'react'
 import LoginModal from './LoginModal'
-import { toggleLoginModal } from '../../actions'
+import Logout from './Logout'
+import LoginButton from './LoginButton'
 
-const Login = ({showLoginModal, registering, dispatch}) => (
+const Login = ({showLoginModal, registering, toggleLoginModal, requestLogin, toggleRegister, loggedIn}) => (
 	<div>
-		<div className="login-button" onClick={() => dispatch(toggleLoginModal())}>{!registering ? 'Sign in' : 'Register'}</div>
-		{showLoginModal ? <LoginModal dispatch={dispatch} registering={registering}/> : null}
+		{loggedIn ? <Logout /> : <LoginButton onClick={() => toggleLoginModal()} registering={registering}/>}
+		{showLoginModal ? <LoginModal toggleRegister={toggleRegister} requestLogin={requestLogin} registering={registering}/> : null}
 	</div>
 )
 

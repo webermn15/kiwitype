@@ -5,6 +5,13 @@ import { createStore, applyMiddleware, compose } from 'redux'
 import thunk from 'redux-thunk'
 import App from './components/App'
 import kiwiApp from './reducers'
+import { getUserInfoFromToken } from './actions'
+
+const user = localStorage.getItem('user');
+console.log(user)
+// if(user) {
+//   store.dispatch(user);
+// }
 
 const middleware = applyMiddleware(thunk)
  

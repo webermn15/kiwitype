@@ -9,8 +9,9 @@ const initialState = {
 	timer: null,
 	counter: 0,
 	charIndex: 0,
-	countdown: 3,
-	error: false
+	countdown: 4,
+	error: false,
+  showCountdown: false
 }
 
 class ExcerptInput extends Component<{}> {
@@ -32,19 +33,22 @@ class ExcerptInput extends Component<{}> {
 
   startTimer = () => {
     let countdownTimer = setInterval(() => {
-      if (this.state.countdown === 1) {
-        let timer = setInterval(this.tick, 500)
-        this.setState({timer: timer})
-        clearInterval(countdownTimer)
-        this.inputVal.focus()
-      }
-      this.setState({countdown: this.state.countdown - 1})
+      this.setState({showCountdown: true, countdownTimer: countdownTimer, countdown: this.state.countdown - 1}, () => {this.checkCountdown()})
     }, 1000)
+  }
+
+  checkCountdown = () => {
+    if (this.state.countdown === 0) {
+      let timer = setInterval(this.tick, 500)
+      this.setState({timer: timer, showCountdown: false, countdownTimer: null})
+      clearInterval(this.state.countdownTimer)
+      this.inputVal.focus()
+    }
   }
 
   clearTimer = () => {
   	clearInterval(this.state.timer)
-  	this.setState({timer: null, counter: 0, countdown: 3, charIndex: 0})
+  	this.setState({timer: null, counter: 0, countdown: 4, charIndex: 0, showCountdown: false})
   }
 
   tick = () => {
@@ -67,14 +71,12 @@ class ExcerptInput extends Component<{}> {
   		let wpm = (this.state.body.length / 5) / (this.state.counter / 60)
     	this.clearTimer()
     	this.inputVal.value = ''
-  		this.setState({...this.state, initialState})
 
       this.props.dispatch(postScore(this.props.currentExcerpt.id, wpm))
   	}
   }
 
   inputError = () => {
-  	console.log('error')
   	this.setState({error: true})
   }
 
@@ -86,16 +88,17 @@ class ExcerptInput extends Component<{}> {
 				<input 
 					style={{
 						color: this.state.error ? 'white' : 'black',
-					  backgroundColor: this.state.error ? 'red' : null
+					  backgroundColor: this.state.error ? 'red' : null,
+            fontSize: '32px'
 					}}
 					onChange={this.checkInput} 
-					maxLength="6" 
+					maxLength={!this.state.timer ? 0 : null} 
 					className="excerpt-input" 
-					placeholder="user input goes here" 
+					placeholder={this.state.timer ? 'Go!' : "Ready?"} 
 					ref={character => this.inputVal = character}
 				/>
-				<button onClick={() => {!this.state.timer ? this.startTimer() : this.clearTimer()}}>{this.state.timer ? 'Reset?' : 'Start!'}</button>
-        <span style={{fontSize: '32px', margin: '2px'}}>{this.state.countdown}</span>
+				<button onClick={() => {!this.state.timer ? this.startTimer() : this.clearTimer()}}>{this.state.timer ? 'Reset?' : 'Start!'}</button> 
+        {this.state.showCountdown ? <span style={{fontSize: '32px', margin: '2px'}}>{this.state.countdown}</span> : null}
 			</div>
 		)
 	}

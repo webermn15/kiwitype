@@ -16,4 +16,10 @@ class User < ActiveRecord::Base
     SecureRandom.urlsafe_base64
   end
 
+  def lifetime_wpm
+		that = self
+    Attempt.select("wpm")
+    	.where("user_id = ?", that.id)
+	end
+
 end
