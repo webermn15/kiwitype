@@ -36,7 +36,7 @@ class UserController < ApplicationController
 				session_token: @user.session_token
 			}
 		end
-
+		# binding.pry
 		resp = {
 			user: user_info,
 			message: session[:message],
@@ -109,16 +109,16 @@ class UserController < ApplicationController
 
 		if success
 			all_wpm = @user[0].lifetime_wpm().pluck(:wpm)			
-			if all_wpm
+			if all_wpm.length > 0
 				wpm_avg = (all_wpm.sum / all_wpm.length).round(2)
 			else
 				wpm_avg = 0
 			end
 			user_info = {
-				id: @user.id,
-				username: @user.username,
+				id: session[:user_id],
+				username: session[:username],
 				lifetimeWpm: wpm_avg,
-				session_token: @user.session_token
+				session_token: session[:session_token]
 			}
 			session[:message] = 'Session resumed'
 		end

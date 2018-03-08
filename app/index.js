@@ -17,10 +17,10 @@ let store = createStore(
 	)
 )
 
-const user = localStorage.getItem('kiwiTypeUser');
-console.log(user)
+const user = localStorage.getItem('kiwiTypeUser')
+
 if (user) {
-  store.dispatch(getUserInfoFromToken(user));
+  store.dispatch(getUserInfoFromToken(user))
 }
 
 render(

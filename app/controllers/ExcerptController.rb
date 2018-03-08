@@ -1,5 +1,11 @@
 class ExcerptController < ApplicationController
 
+	before do
+		p session
+		p "I just printed the session"
+	end
+
+
 	get '/all' do 
 		@excerpts = Excerpt.all 
 		resp = {
@@ -10,8 +16,8 @@ class ExcerptController < ApplicationController
 	end
 
 
-	get '/init' do 
 
+	get '/init' do 
 		@excerpt = Excerpt.order("RANDOM()").first
 		@excerpts = Excerpt.order("id ASC").limit(10)
 
@@ -28,7 +34,7 @@ class ExcerptController < ApplicationController
 
 		@userscores = 
 		Attempt.select("excerpt_id, user_id, wpm, creation_date")
-			.where("excerpt_id = ? AND user_id = ?", @excerpt.id, 2) #session[:user_id]
+			.where("excerpt_id = ? AND user_id = ?", @excerpt.id, session[:user_id]) 
 			.order("wpm ASC").to_a
 
 		@arraytwo = []
@@ -50,6 +56,7 @@ class ExcerptController < ApplicationController
 	end
 
 
+
 	get '/allscores' do 
 		@excerpt = Excerpt.find(1)
 		hs = @excerpt.all_high_scores()
@@ -63,9 +70,5 @@ class ExcerptController < ApplicationController
 		}.to_json
 	end
 
-
-	get '/userscores' do 
-		'userscores'
-	end
 
 end

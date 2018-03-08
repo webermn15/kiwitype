@@ -1,17 +1,27 @@
 class AttemptController < ApplicationController
 
+	before do
+		p session
+		p "I just printed the session"
+	end
 
 
 	post '/new' do 
+		# session = session
+
+		# p session 
+
 		wpm = params["wpm"].to_f.round(2)
 
 		excerpt = Excerpt.where("id = ?", params["excerpt_id"])
 		title = excerpt[0].title
 
+		binding.pry
+
 		@attempt = Attempt.new
-		@attempt.user_id = session[:user_id]
-		@attempt.excerpt_id = params[:excerpt_id]
-		@attempt.wpm = params[:wpm]
+		@attempt.user_id = session[:user_id] || 1
+		@attempt.excerpt_id = params["excerpt_id"]
+		@attempt.wpm = wpm
 		@attempt.save
 
 		resp = {
@@ -40,7 +50,7 @@ class AttemptController < ApplicationController
 
 		@userscores = 
 		Attempt.select("excerpt_id, user_id, wpm, creation_date")
-			.where("excerpt_id = ? AND user_id = ?", params["id"], 2) #session[:user_id]
+			.where("excerpt_id = ? AND user_id = ?", params["id"], session[:user_id])
 			.order("wpm ASC").to_a
 
 		@arraytwo = []

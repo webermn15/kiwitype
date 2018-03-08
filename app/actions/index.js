@@ -115,6 +115,7 @@ export const getLoginInfo = data => {
 		dispatch(requestLogin())
 		request
 			.post("http://localhost:9292/users/login")
+			.withCredentials()
 			.type('form')
 			.send(data)
 			.end((err, res) => {
@@ -275,6 +276,7 @@ export const postScore = (excerptId, wpm) => {
 		dispatch(postResult())
 		request
 			.post('http://localhost:9292/attempts/new')
+			.withCredentials()
 			.type('form')
 			.send({excerpt_id: excerptId, wpm: wpm})
 			.end((err, res) => {

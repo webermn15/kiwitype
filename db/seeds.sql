@@ -3,9 +3,7 @@ INSERT INTO excerpts (author, title, description, body) VALUES ('JRR Tolkien', '
 INSERT INTO excerpts (author, title, description, body) VALUES ('Ben Gibbard', 'I Will Follow You Into the Dark', '"It''s just this idea that what if somebody dies and we''re just floating, just stumbling around in infinite darkness, and I''m just trying to find some kind of spiritual kind of peace with myself, and the world." -Ben Gibbard',  'If heaven and hell decide that they both are satisfied; illuminate the ''No''s on their vacancy signs; if there''s no one beside you, when your soul embarks; then I''ll follow you into the dark.');
 
 
-
-
-
+INSERT INTO excerpts (author, title, description, body) VALUES ('asdf', 'asdf', 'asdf', 'asdf');
 
 
 
