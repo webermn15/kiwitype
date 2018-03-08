@@ -64,7 +64,7 @@ class ExcerptInput extends Component<{}> {
 
   inputMatch = () => {
   	this.setState({charIndex: this.state.charIndex + 1, error: false})
-  	if (this.inputVal.value.length > 5) {
+  	if (this.inputVal.value.length > 14) {
   		this.inputVal.value = this.inputVal.value.substring(1)
   	}
   	if (this.state.charIndex == this.state.body.length - 1) {
@@ -92,7 +92,7 @@ class ExcerptInput extends Component<{}> {
             fontSize: '32px'
 					}}
 					onChange={this.checkInput} 
-					maxLength={!this.state.timer ? 0 : null} 
+					maxLength={!this.state.timer ? 0 : 15} 
 					className="excerpt-input" 
 					placeholder={this.state.timer ? 'Go!' : "Ready?"} 
 					ref={character => this.inputVal = character}

@@ -36,7 +36,7 @@ class UserController < ApplicationController
 				session_token: @user.session_token
 			}
 		end
-		# binding.pry
+
 		resp = {
 			user: user_info,
 			message: session[:message],
@@ -131,14 +131,5 @@ class UserController < ApplicationController
 	end
 
 
-
-	get '/test' do 
-		@user = User.where("session_token = ?", 1)
-		# token = @user[0].session_token
-		p @user
-		resp = {
-			token: @user
-		}.to_json
-	end
 
 end

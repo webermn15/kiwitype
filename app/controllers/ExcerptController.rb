@@ -1,9 +1,5 @@
 class ExcerptController < ApplicationController
 
-	before do
-		p session
-		p "I just printed the session"
-	end
 
 
 	get '/all' do 
@@ -18,6 +14,7 @@ class ExcerptController < ApplicationController
 
 
 	get '/init' do 
+		session[:init] = true
 		@excerpt = Excerpt.order("RANDOM()").first
 		@excerpts = Excerpt.order("id ASC").limit(10)
 
@@ -55,20 +52,6 @@ class ExcerptController < ApplicationController
 		}.to_json
 	end
 
-
-
-	get '/allscores' do 
-		@excerpt = Excerpt.find(1)
-		hs = @excerpt.all_high_scores()
-		hs_arr = hs.to_a
-
-		p hs_arr[0].user
-
-		hs[0].user
-		resp = {
-			asdf: hs
-		}.to_json
-	end
 
 
 end

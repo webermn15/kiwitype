@@ -168,6 +168,7 @@ export const requestLogout = () => {
 		dispatch(logUserOut())
 		request
 			.get('http://localhost:9292/users/logout')
+			.withCredentials()
 			.end((err, res) => {
 				const parsed = JSON.parse(res.text)
 				if (parsed.success) {
@@ -193,6 +194,7 @@ export const getUserInfoFromToken = token => {
     dispatch(requestLogin())
   	request
   		.get("http://localhost:9292/users/token/"+token)
+  		.withCredentials()
   		.end((err,res) => {
 				const parsed = JSON.parse(res.text)
 				console.log(parsed)
@@ -238,7 +240,7 @@ export const fetchScores = (id) => {
     dispatch(requestScores())
   	request
   		.get("http://localhost:9292/attempts/scores/"+id)
-  		.type('json')
+  		.withCredentials()
   		.end((err,res) => {
   			const parsed = JSON.parse(res.text)
   			console.log(parsed)
@@ -255,11 +257,12 @@ const postResult = () => {
 }
 
 
-export const recordWpm = (wpm, title) => {
+export const recordWpm = (wpm, title, id) => {
 	return {
 		type: 'RECORD_WPM_LOCALLY',
 		wpm: wpm,
-		title: title
+		title: title,
+		excerptId: id
 	}
 }
 
@@ -282,7 +285,7 @@ export const postScore = (excerptId, wpm) => {
 			.end((err, res) => {
 				console.log(res)
 				const parsed = JSON.parse(res.text)
-				dispatch(recordWpm(parsed.wpm, parsed.title))
+				dispatch(recordWpm(parsed.wpm, parsed.title, excerptId))
 			})
 	}
 }

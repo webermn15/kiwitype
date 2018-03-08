@@ -1,5 +1,6 @@
 import { connect } from 'react-redux'
 import ScoreModal from '../components/ScoreModal'
+import { closeResult, fetchScores } from '../actions'
 
 const mapStateToProps = state => {
 	return {
@@ -7,8 +8,18 @@ const mapStateToProps = state => {
 	}
 }
 
+const mapDispatchToProps = dispatch => {
+	return {
+		closeAndPostResult: (id) => {
+			dispatch(closeResult())
+			dispatch(fetchScores(id))
+		}
+	}
+}
+
 const ScoreModalContainer = connect(
-	mapStateToProps
+	mapStateToProps,
+	mapDispatchToProps
 )(ScoreModal)
 
 export default ScoreModalContainer

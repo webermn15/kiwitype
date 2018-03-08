@@ -1,22 +1,13 @@
 class AttemptController < ApplicationController
 
-	before do
-		p session
-		p "I just printed the session"
-	end
 
 
 	post '/new' do 
-		# session = session
-
-		# p session 
-
+		session[:init] = true
 		wpm = params["wpm"].to_f.round(2)
 
 		excerpt = Excerpt.where("id = ?", params["excerpt_id"])
 		title = excerpt[0].title
-
-		binding.pry
 
 		@attempt = Attempt.new
 		@attempt.user_id = session[:user_id] || 1
@@ -33,10 +24,12 @@ class AttemptController < ApplicationController
 
 
 	get '/scores/:id' do 
+		session[:init] = true
+
 		@allscores = 
 		Attempt.select("excerpt_id, user_id, wpm, creation_date")
 			.where("excerpt_id = ?", params["id"]) 
-			.order("wpm ASC").to_a
+			.order("wpm DESC").to_a
 
 		@array = []
 		@allscores.map {|i| @array.push(i.user)}
@@ -51,7 +44,7 @@ class AttemptController < ApplicationController
 		@userscores = 
 		Attempt.select("excerpt_id, user_id, wpm, creation_date")
 			.where("excerpt_id = ? AND user_id = ?", params["id"], session[:user_id])
-			.order("wpm ASC").to_a
+			.order("wpm DESC").to_a
 
 		@arraytwo = []
 		@userscores.map {|k| @arraytwo.push(k.user)}

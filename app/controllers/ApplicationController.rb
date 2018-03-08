@@ -29,7 +29,9 @@ class ApplicationController < Sinatra::Base
 	use Rack::MethodOverride  
 	set :method_override, true
 
-	enable :sessions
+	use Rack::Session::Cookie, 	:key => 'rack.session',
+                           		:path => '/',
+                         	  	:secret => 'your_secret'
 
 	not_found do 
 		halt 404

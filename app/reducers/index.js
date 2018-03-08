@@ -127,13 +127,14 @@ const scores = (state = {isFetching: false, allScores: [], userScores: []}, acti
 	}
 }
 
-const mostRecentAttempt = (state = {wpm: 0, title: '', isPosting: false, hasPosted: false}, action) => {
+const mostRecentAttempt = (state = {wpm: 0, title: '', excerptId: null, isPosting: false, hasPosted: false}, action) => {
 	switch (action.type) {
 		case 'RECORD_WPM_LOCALLY':
 			return Object.assign({}, state, {
 				...state,
 				wpm: action.wpm,
 				title: action.title,
+				excerptId: action.excerptId,
 				isPosting: false,
 				hasPosted: true
 			})

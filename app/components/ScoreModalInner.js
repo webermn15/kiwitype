@@ -1,7 +1,6 @@
 import React from 'react'
-import { closeResult } from '../actions'
 
-const ScoreModalInner = ({wpm, title, isPosting, dispatch}) => {
+const ScoreModalInner = ({wpm, title, isPosting, onClick}) => {
 	if (isPosting) {
 		return(
 			<div>
@@ -15,7 +14,7 @@ const ScoreModalInner = ({wpm, title, isPosting, dispatch}) => {
 			<span 
 				style={{fontSize: '14px', marginTop: '20px', cursor: 'pointer'}}
 				onClick={() => {
-					dispatch(closeResult())
+					onClick()
 				}}
 			>
 				click here to close

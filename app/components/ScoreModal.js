@@ -2,7 +2,7 @@ import React from 'react'
 import './content.css'
 import ScoreModalInner from './ScoreModalInner'
 
-const ScoreModal = ({mostRecentAttempt, dispatch}) => {
+const ScoreModal = ({mostRecentAttempt, closeAndPostResult}) => {
 	if (mostRecentAttempt.isPosting || mostRecentAttempt.hasPosted) {
 		return(
 			<div 
@@ -12,7 +12,7 @@ const ScoreModal = ({mostRecentAttempt, dispatch}) => {
 					wpm={mostRecentAttempt.wpm} 
 					title={mostRecentAttempt.title} 
 					isPosting={mostRecentAttempt.isPosting}
-					dispatch={dispatch}
+					onClick={() => {closeAndPostResult(mostRecentAttempt.excerptId)}}
 				/>
 			</div>
 		)
