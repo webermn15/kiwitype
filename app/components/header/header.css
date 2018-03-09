@@ -1,6 +1,6 @@
 .header {	
 	width: 100%;
-	background-color: peachpuff;
+	border-bottom: 1px solid white;
 }
 .header-nav {
 	display: flex;

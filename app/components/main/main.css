@@ -1,22 +1,20 @@
 .main-container {
-	border: 1px dashed black;
-	width: 50vw;
-	height: 50vh;
+	background-color: pink;
+	width: 75%;
+	height: 100%;
 	display: flex;
 	flex-direction: column;
 	justify-content: space-between;
 }
+.excerpt-container {
+	display: flex;
+	justify-content: space-around;
+	flex-direction: column;
+}
 .excerpt-detail {
 	display: flex;
 	justify-content: space-between;
-	border: 1px solid pink;
 }
 .excerpt-input {
 	width: 500px;
-}
-.initial-keyboard {
-	fill: 'white';
-}
-.on-press {
-	fill: 'palevioletred';
 }

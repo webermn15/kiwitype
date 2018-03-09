@@ -83,7 +83,7 @@ class ExcerptInput extends Component<{}> {
 	render() {
 		console.log(this.state)
 		return(
-			<div>
+			<div className="excerpt-container">
 				<Excerpt currentExcerpt={this.props.currentExcerpt} bodyArray={this.state.body} currentIndex={this.state.charIndex}/>
 				<input 
 					style={{

@@ -1,11 +1,19 @@
+@import url('https://fonts.googleapis.com/css?family=Raleway');
+
+.app {
+	background-color: #77942E;
+	height: 100vh;
+	width: 100vw;
+}
 .content-container {
-	width: 60vw;
+	font-family: 'Raleway', sans-serif;
+	height: 60vh;
+	width: 70vw;
 	margin: 0 auto;
 	margin-top: 50px;
 	padding: 2px;
 	display: flex;
 	justify-content: space-around;
-	border: 1px dashed red;
 }
 .score-modal {
 	position: fixed;
@@ -18,7 +26,6 @@
 }
 .score-modal div {
 	margin: 0 auto;
-	border: 1px solid white;
 	width: 400px;
 	height: 100px;
 	text-align: center;
