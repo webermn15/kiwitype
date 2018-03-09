@@ -14,3 +14,9 @@
 .excerpt-input {
 	width: 500px;
 }
+.initial-keyboard {
+	fill: 'white';
+}
+.on-press {
+	fill: 'palevioletred';
+}
