@@ -52,7 +52,7 @@ class AttemptController < ApplicationController
 		userscores.each_with_index do |l, ind|
 			l.delete("id")
 			l["username"] = arraytwo[ind]["username"]
-			j["creation_date"] = j["creation_date"].strftime("%B %-d, %Y")
+			l["creation_date"] = l["creation_date"].strftime("%B %-d, %Y")
 		end
 
 		resp = {

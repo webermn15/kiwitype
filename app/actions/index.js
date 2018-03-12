@@ -199,7 +199,9 @@ export const getUserInfoFromToken = token => {
   		.end((err,res) => {
 				const parsed = JSON.parse(res.text)
 				if (parsed.success) {
+					console.log(parsed.user.id)
 					dispatch(setUserInfo(parsed.user))
+					dispatch(fetchScores(parsed.user.id))
 				}
 				else {
 					console.log(parsed)
@@ -274,6 +276,7 @@ export const fetchScores = (id) => {
   		.withCredentials()
   		.end((err,res) => {
   			const parsed = JSON.parse(res.text)
+  			console.log(parsed)
   			dispatch(receiveScores(parsed))
   		})
   }
