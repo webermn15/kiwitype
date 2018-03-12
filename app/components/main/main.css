@@ -46,14 +46,17 @@
 	padding-top: 5px;
 }
 .start-excerpt-button {
-	box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2);
+	border: 2px solid #C48832;
   color: inherit;
-  border: none;
   padding: 10px;
   font: inherit;
   cursor: pointer;
   outline: inherit;
   background-color: #B1D84C;
+  transition: box-shadow 0.5s ease;
+}
+.start-excerpt-button:hover {
+	box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5);
 }
 .keyboard {
 	margin: 0 auto;

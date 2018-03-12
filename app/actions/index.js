@@ -125,9 +125,12 @@ export const getLoginInfo = data => {
 						dispatch(setUserInfo(parsed.user))
 						dispatch(toggleLoginModal())
 					}
+					else {
+						dispatch(loginFailed(parsed.message))
+					}
 				}
 				else {
-					dispatch(loginFailed(parsed.message))
+					console.log(err)
 				}
 			})
 	}
@@ -201,7 +204,7 @@ export const getUserInfoFromToken = token => {
 				if (parsed.success) {
 					console.log(parsed.user.id)
 					dispatch(setUserInfo(parsed.user))
-					dispatch(fetchScores(parsed.user.id))
+					// dispatch(fetchScores(parsed.user.id))
 				}
 				else {
 					console.log(parsed)

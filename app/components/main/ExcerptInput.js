@@ -39,6 +39,7 @@ class ExcerptInput extends Component<{}> {
 
   checkCountdown = () => {
     if (this.state.countdown === 0) {
+      document.getElementById('disable-this').disabled = false
       let timer = setInterval(this.tick, 500)
       this.setState({timer: timer, showCountdown: false, countdownTimer: null})
       clearInterval(this.state.countdownTimer)
@@ -48,6 +49,7 @@ class ExcerptInput extends Component<{}> {
 
   clearTimer = () => {
   	clearInterval(this.state.timer)
+    this.inputVal.value = ''
   	this.setState({timer: null, counter: 0, countdown: 4, charIndex: 0, showCountdown: false})
   }
 
@@ -94,13 +96,15 @@ class ExcerptInput extends Component<{}> {
 					onChange={this.checkInput} 
 					maxLength={!this.state.timer ? 0 : 25} 
 					className="excerpt-input" 
-					placeholder={this.state.timer ? 'Go!' : "Press the Start button below"} 
+					placeholder={this.state.timer ? 'Go!' : "Press the Start button below!"} 
 					ref={character => this.inputVal = character}
 				/>
 				<button 
           onClick={() => {
             !this.state.timer ? this.startTimer() : this.clearTimer()
+            document.getElementById('disable-this').disabled = true
           }}
+          id="disable-this"
           className="start-excerpt-button"
         >
           {this.state.timer ? 'Reset?' : 'Start!'}

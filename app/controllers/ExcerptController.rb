@@ -14,7 +14,6 @@ class ExcerptController < ApplicationController
 
 
 	get '/init' do 
-		session[:init] = true
 		@excerpt = Excerpt.order("RANDOM()").first
 		@excerpts = Excerpt.order("id ASC").limit(10)
 

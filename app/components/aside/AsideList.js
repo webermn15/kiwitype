@@ -9,9 +9,10 @@ const AsideList = ({asideList, asideFilter, onExcerptClick}) => {
       <div style={{
         backgroundColor: '#B1D84C',
         padding: '5px',
-        marginTop: '10px',
+        marginTop: '15px',
         fontSize: '18px',
-        fontFamily: 'Source Sans Pro'
+        fontFamily: 'Source Sans Pro',
+        borderBottom: '1px solid white'
       }}>No records found!</div>
     )
   }

@@ -4,8 +4,8 @@ import { AsideFilters } from '../../actions'
 
 const AsideFilter = () => (
 	<div className="aside-filter">
-		<FilterLinkContainer filter={AsideFilters.SHOW_EXCERPTS}>Excerpts</FilterLinkContainer> | 
-		<FilterLinkContainer filter={AsideFilters.SHOW_ALL_SCORES}>High Scores</FilterLinkContainer> | 
+		<FilterLinkContainer filter={AsideFilters.SHOW_EXCERPTS}>Excerpts</FilterLinkContainer> <span> | </span>
+		<FilterLinkContainer filter={AsideFilters.SHOW_ALL_SCORES}>High Scores</FilterLinkContainer> <span> | </span>
 		<FilterLinkContainer filter={AsideFilters.SHOW_USER_SCORES}>My Scores</FilterLinkContainer>
 	</div>
 )
