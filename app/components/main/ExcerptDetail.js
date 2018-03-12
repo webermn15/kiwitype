@@ -3,7 +3,15 @@ import './main.css'
 
 const ExcerptDetail = ({id, author, title, description}) => (
 	<div id={id} className="excerpt-detail">
-		<div>{ title } - { author }:</div><div>{ description }</div>
+		<div className="excerpt-detail-title-author">
+			<div className="detail-title">
+				{ title }
+			</div>
+			<div className="detail-author">
+				{ author }
+			</div>
+		</div>
+		<div>{ description }</div>
 	</div>
 )
 

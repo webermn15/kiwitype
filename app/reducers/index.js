@@ -48,7 +48,8 @@ const initialUserState = {
 		authenticated: false,
 		errorMsg: null,
 		loggingOut: false,
-		session_token: null
+		session_token: null,
+		registering: false
 	}
 
 const userInfo = (state = initialUserState, action) => {
@@ -58,6 +59,22 @@ const userInfo = (state = initialUserState, action) => {
 				...state,
 				authenticated: true,
 				authenticating: false,
+				errorMsg: null,
+				id: action.data.id,
+				username: action.data.username,
+				lifetimeWpm: action.data.lifetimeWpm,
+				session_token: action.data.session_token
+			})
+		case 'REQUEST_REGISTER':
+			return Object.assign({}, state, {
+				...state,
+				registering: true
+			})
+		case 'REGISTER_USER':
+			return Object.assign({}, state, {
+				...state,
+				registering: false,
+				authenticated: true,
 				errorMsg: null,
 				id: action.data.id,
 				username: action.data.username,

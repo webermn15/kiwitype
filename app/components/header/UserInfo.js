@@ -1,10 +1,12 @@
 import React from 'react'
 import { toggleInfo } from '../../actions'
 import UserInfoModal from './UserInfoModal'
+import './header.css'
 
 const UserInfo = ({userInfo, toggleInfo}) => (
 	<div 
-		className="nav-inner"
+		className="user-info"
+		style={{fontFamily: 'Helvetica'}}
 		onClick={() => toggleInfo()}
 	>
 		{userInfo.username}

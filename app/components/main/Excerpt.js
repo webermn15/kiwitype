@@ -1,10 +1,11 @@
 import React from 'react'
 import ExcerptDetail from './ExcerptDetail'
+import './main.css'
 
 const Excerpt = ({currentExcerpt, bodyArray, currentIndex}) => (
-	<div>
+	<div className="excerpt">
 		<ExcerptDetail id={currentExcerpt.id} author={currentExcerpt.author} title={currentExcerpt.title} description={currentExcerpt.description}/>
-		<div>
+		<div className="excerpt-body">
 	    {bodyArray.map((char, i) => (
 	      <span 
 	      	key={i}

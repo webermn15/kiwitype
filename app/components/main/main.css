@@ -1,20 +1,74 @@
+@import url('https://fonts.googleapis.com/css?family=Raleway|Source+Sans+Pro:300i');
+
 .main-container {
-	background-color: pink;
-	width: 75%;
-	height: 100%;
-	display: flex;
-	flex-direction: column;
-	justify-content: space-between;
+	width: 70%;
+	height: 70vh;
 }
 .excerpt-container {
 	display: flex;
-	justify-content: space-around;
+	justify-content: space-between;
 	flex-direction: column;
+	border: 1px solid rgba(0, 0, 0, 0.2);
 }
 .excerpt-detail {
+	font-family: 'Source Sans Pro', sans-serif;
 	display: flex;
 	justify-content: space-between;
+	border-bottom: 1px solid black;
+	padding-bottom: 5px;
+}
+.excerpt-detail-title-author {
+	width: 40%;
+	display: flex;
+	flex-direction: column;
+}
+.detail-title {
+	font-family: 'Source Sans Pro', sans-serif;
+}
+.detail-author {
+	font-family: 'Source Sans Pro', sans-serif;
+	font-size: 24px;
+}
+.excerpt {
+	background-color: white;
+	display: flex;
+	justify-content: space-between;
+	flex-direction: column;
+	padding: 10px;
 }
 .excerpt-input {
-	width: 500px;
+	font-family: 'Helvetica', sans-serif;
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+.excerpt-body {
+	font-size: 24px;
+	padding-top: 5px;
+}
+.start-excerpt-button {
+	box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2);
+  color: inherit;
+  border: none;
+  padding: 10px;
+  font: inherit;
+  cursor: pointer;
+  outline: inherit;
+  background-color: #B1D84C;
+}
+.keyboard {
+	margin: 0 auto;
+	margin-top: 10px;
+	text-align: center;
+}
+.countdown {
+	font-size: 300px;
+	font-family: 'Source Sans Pro', sans-serif;
+	color: white;
+	background-color: rgba(0, 0, 0, 0.5);
+	position: fixed;
+	width: 100vw;
+	height: 100vh;
+	top: 0;
+	left: 0;
+	text-align: center;
 }

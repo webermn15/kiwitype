@@ -8,15 +8,24 @@ class KeyboardDisplay extends Component<{}> {
 		super()
 
 		this.state = {
-			bgColor: '#9AB452'
+			bgColor: '#9AB452',
+			setSvg: 700
 		}
 	}
 	componentDidMount = () => {
 		window.addEventListener('keydown', this.handleKeyPress)
 		window.addEventListener('keyup', this.handleKeyRelease)
+		window.addEventListener('resize', this.handleResize)
+		this.handleResize()
+	}
+	handleResize = () => {
+		let width = window.innerWidth
+		if (width < 1200) {
+			let ratio = width * 0.5
+			this.setState({setSvg: ratio})
+		}
 	}
 	handleKeyPress = (e) => {
-		console.log(e.code)
 		let lastPress = document.getElementById(e.code)
 		if (lastPress) {
 			lastPress.setAttribute('fill', this.state.bgColor)
@@ -30,8 +39,8 @@ class KeyboardDisplay extends Component<{}> {
 	}
 	render() {
 		return(
-			<div>
-				<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 300" height="240" >
+			<div className="keyboard">
+				<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 300" width={this.state.setSvg} >
 					    <g fontSize="24" fontWeight="700" textAnchor="middle" fontFamily="Helvetica" color="white">
 					        <g>
 						        <path id="Backquote" d="M60,0 h-60 v60 h60" fill="black"/>

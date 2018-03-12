@@ -21,8 +21,11 @@ class LoginModal extends Component<{}> {
 			usernameIsValid: validUser,
 			passwordIsValid: validPass
 		}, () => {
-			if (this.state.usernameIsValid && this.state.passwordIsValid) {
+			if (this.state.usernameIsValid && this.state.passwordIsValid && !this.props.registering) {
 				this.props.requestLogin({username: this.inputUser.value, password: this.inputPass.value})
+			}
+			else if (this.state.usernameIsValid && this.state.passwordIsValid && this.props.registering) {
+				this.props.requestRegister({username: this.inputUser.value, password: this.inputPass.value})
 			}
 			else {
 				this.inputUser.focus()

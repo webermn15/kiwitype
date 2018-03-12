@@ -1,5 +1,5 @@
 import { connect } from 'react-redux'
-import { toggleLoginModal, toggleRegister, getLoginInfo, requestLogout } from '../actions'
+import { toggleLoginModal, toggleRegister, getLoginInfo, requestLogout, registerNewUser } from '../actions'
 import Login from '../components/header/Login'
 
 const mapStateToProps = state => {
@@ -25,6 +25,9 @@ const mapDispatchToProps = dispatch => {
 		},
 		requestLogout: () => {
 			dispatch(requestLogout())
+		},
+		requestRegister: (loginParams) => {
+			dispatch(registerNewUser(loginParams))
 		}
 	}
 }

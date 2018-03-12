@@ -81,7 +81,6 @@ class ExcerptInput extends Component<{}> {
   }
 
 	render() {
-		console.log(this.state)
 		return(
 			<div className="excerpt-container">
 				<Excerpt currentExcerpt={this.props.currentExcerpt} bodyArray={this.state.body} currentIndex={this.state.charIndex}/>
@@ -89,7 +88,7 @@ class ExcerptInput extends Component<{}> {
 					style={{
 						color: this.state.error ? 'white' : 'black',
 					  backgroundColor: this.state.error ? 'red' : null,
-            fontSize: '32px'
+            fontSize: '24px'
 					}}
 					onChange={this.checkInput} 
 					maxLength={!this.state.timer ? 0 : 15} 
@@ -97,8 +96,15 @@ class ExcerptInput extends Component<{}> {
 					placeholder={this.state.timer ? 'Go!' : "Ready?"} 
 					ref={character => this.inputVal = character}
 				/>
-				<button onClick={() => {!this.state.timer ? this.startTimer() : this.clearTimer()}}>{this.state.timer ? 'Reset?' : 'Start!'}</button> 
-        {this.state.showCountdown ? <span style={{fontSize: '32px', margin: '2px'}}>{this.state.countdown}</span> : null}
+				<button 
+          onClick={() => {
+            !this.state.timer ? this.startTimer() : this.clearTimer()
+          }}
+          className="start-excerpt-button"
+        >
+          {this.state.timer ? 'Reset?' : 'Start!'}
+        </button> 
+        {this.state.showCountdown ? <span className="countdown">{this.state.countdown}</span> : null}
 			</div>
 		)
 	}

@@ -3,7 +3,6 @@ class AttemptController < ApplicationController
 
 
 	post '/new' do 
-		session[:init] = true
 		wpm = params["wpm"].to_f.round(2)
 
 		excerpt = Excerpt.where("id = ?", params["excerpt_id"])
@@ -24,8 +23,6 @@ class AttemptController < ApplicationController
 
 
 	get '/scores/:id' do 
-		session[:init] = true
-
 		@allscores = 
 		Attempt.select("excerpt_id, user_id, wpm, creation_date")
 			.where("excerpt_id = ?", params["id"]) 
@@ -39,6 +36,7 @@ class AttemptController < ApplicationController
 		allscores.each_with_index do |j, index|
 			j.delete("id")
 			j["username"] = array[index]["username"]
+			# j["creation_date"].strftime("%Y-%m-%d %H:%M:%S")
 		end
 
 		@userscores = 
@@ -59,6 +57,16 @@ class AttemptController < ApplicationController
 		resp = {
 			allscores: allscores,
 			userscores: userscores
+		}.to_json
+	end
+
+
+	get '/test' do 
+		foo = '2018-03-12T03:25:47.667Z'.sub('T', ' ')
+		p foo
+
+		resp = {
+		 	suck: 'eggs'
 		}.to_json
 	end
 

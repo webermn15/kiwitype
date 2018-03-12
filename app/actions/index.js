@@ -119,11 +119,12 @@ export const getLoginInfo = data => {
 			.type('form')
 			.send(data)
 			.end((err, res) => {
-				const parsed = JSON.parse(res.text)
-				console.log(parsed)
-				if (parsed.success) {
-					dispatch(setUserInfo(parsed.user))
-					dispatch(toggleLoginModal())
+				if (res.text !== undefined) {
+					const parsed = JSON.parse(res.text)
+					if (parsed.success) {
+						dispatch(setUserInfo(parsed.user))
+						dispatch(toggleLoginModal())
+					}
 				}
 				else {
 					dispatch(loginFailed(parsed.message))
@@ -197,7 +198,6 @@ export const getUserInfoFromToken = token => {
   		.withCredentials()
   		.end((err,res) => {
 				const parsed = JSON.parse(res.text)
-				console.log(parsed)
 				if (parsed.success) {
 					dispatch(setUserInfo(parsed.user))
 				}
@@ -209,9 +209,40 @@ export const getUserInfoFromToken = token => {
 }
 
 
+const requestRegister = () => {
+	return {
+		type: 'REQUEST_REGISTER'
+	}
+}
+
+
+const setNewUser = data => {
+	localStorage.setItem('kiwiTypeUser', data.session_token)
+	return {
+		type: 'REGISTER_USER',
+		data
+	}
+}
+
+
 export const registerNewUser = data => {
 	return (dispatch) => {
-		dispatch
+		dispatch(requestRegister())
+		request
+			.post("http://localhost:9292/users/register")
+			.withCredentials()
+			.type('form')
+			.send(data)
+			.end((err, res) => {
+				const parsed = JSON.parse(res.text)
+				if (parsed.success) {
+					dispatch(setNewUser(parsed.user))
+					dispatch(toggleLoginModal())
+				}
+				else {
+					console.log(parsed)
+				}
+			})
 	}
 }
 
@@ -243,7 +274,6 @@ export const fetchScores = (id) => {
   		.withCredentials()
   		.end((err,res) => {
   			const parsed = JSON.parse(res.text)
-  			console.log(parsed)
   			dispatch(receiveScores(parsed))
   		})
   }
@@ -283,7 +313,6 @@ export const postScore = (excerptId, wpm) => {
 			.type('form')
 			.send({excerpt_id: excerptId, wpm: wpm})
 			.end((err, res) => {
-				console.log(res)
 				const parsed = JSON.parse(res.text)
 				dispatch(recordWpm(parsed.wpm, parsed.title, excerptId))
 			})

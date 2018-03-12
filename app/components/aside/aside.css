@@ -1,3 +1,27 @@
+@import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro:300i');
+
 .aside-container {
 	width: 20vw;
+}
+.aside-filter {
+	font-family: 'Source Sans Pro', sans-serif;
+	font-size: 20px;
+	text-align: center;
+	padding: 10px;
+	background-color: white;
+}
+.aside-list {
+	list-style-type: none;
+	padding: 0;
+	margin: 0;
+	border: 1px solid rgba(0, 0, 0, 0.2);
+	max-height: 70vh;
+	overflow-y: scroll;
+}
+.aside-list li {
+	font-family: 'Source Sans Pro', sans-serif;
+	font-size: 18px;
+	padding: 2px;
+	margin-top: 10px;
+	border-bottom: 1px solid white;
 }
