@@ -39,20 +39,16 @@ The idea beind the app is simple. You open it, you type, and you have a few opti
 
 ### Wireframes and user flow work
 #### __Original idea considerations__
-![Original ideas](https://raw.githubusercontent.com/rynelaster/Project-2-CRUD-Pet-App/master/public/img/IMG_3739.JPG)
+![Original ideas](https://github.com/webermn15/kiwitype/blob/master/dist/public/IMG_3856.JPG)
 
 
 ##### __Front page first look wireframe__
-![Front page wireframe](https://raw.githubusercontent.com/rynelaster/Project-2-CRUD-Pet-App/master/public/img/IMG_3740.JPG)
+![Front page wireframe](https://github.com/webermn15/kiwitype/blob/master/dist/public/IMG_3857.JPG)
 
 
-##### __Original show pet view(top) and show results of search view(bottom) wireframes__
-![Show pet and show results view wireframes](https://raw.githubusercontent.com/rynelaster/Project-2-CRUD-Pet-App/master/public/img/IMG_3741.JPG)
+##### __Structuring files and thinking about how I wanted my state to look__
+![File structure/state shape](https://github.com/webermn15/kiwitype/blob/master/dist/public/IMG_3857.JPG)
 
 
-##### __Revised show results of search view wireframe__
-![Revised show result wireframe](https://raw.githubusercontent.com/rynelaster/Project-2-CRUD-Pet-App/master/public/img/IMG_3742.JPG)
-
-
-##### __Original user flow__
-![User flow](https://raw.githubusercontent.com/rynelaster/Project-2-CRUD-Pet-App/master/public/img/IMG_3744.JPG)
+##### __Thinking about data in the shape of Redux actions__
+![Action flow](https://github.com/webermn15/kiwitype/blob/master/dist/public/IMG_3859.JPG)
