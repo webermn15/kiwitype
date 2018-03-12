@@ -36,7 +36,7 @@ class AttemptController < ApplicationController
 		allscores.each_with_index do |j, index|
 			j.delete("id")
 			j["username"] = array[index]["username"]
-			# j["creation_date"].strftime("%Y-%m-%d %H:%M:%S")
+			j["creation_date"] = j["creation_date"].strftime("%B %-d, %Y")
 		end
 
 		@userscores = 
@@ -52,6 +52,7 @@ class AttemptController < ApplicationController
 		userscores.each_with_index do |l, ind|
 			l.delete("id")
 			l["username"] = arraytwo[ind]["username"]
+			j["creation_date"] = j["creation_date"].strftime("%B %-d, %Y")
 		end
 
 		resp = {
@@ -62,9 +63,10 @@ class AttemptController < ApplicationController
 
 
 	get '/test' do 
-		foo = '2018-03-12T03:25:47.667Z'.sub('T', ' ')
-		p foo
-
+		foo = '2018-03-12T03:25:47.667Z'
+		# foo.strftime("%Y-%m-%d %H:%M:%S")
+		bar = foo.slice!(0, 10)
+		p bar
 		resp = {
 		 	suck: 'eggs'
 		}.to_json

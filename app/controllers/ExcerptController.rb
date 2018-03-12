@@ -27,6 +27,7 @@ class ExcerptController < ApplicationController
 		allscores.each_with_index do |j, index|
 			j.delete("id")
 			j["username"] = array[index]["username"]
+			j["creation_date"] = j["creation_date"].strftime("%B %-d, %Y")
 		end
 
 		@userscores = 
@@ -42,6 +43,7 @@ class ExcerptController < ApplicationController
 		userscores.each_with_index do |l, ind|
 			l.delete("id")
 			l["username"] = arraytwo[ind]["username"]
+			j["creation_date"] = j["creation_date"].strftime("%B %-d, %Y")
 		end
 
 		resp = {
