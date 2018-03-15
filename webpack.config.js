@@ -29,5 +29,8 @@ module.exports = {
       }
     ]
   },
-  mode: 'production'
+  devServer: {
+    contentBase: path.resolve(__dirname, 'dist/public')
+  },
+  mode: 'development'
 }

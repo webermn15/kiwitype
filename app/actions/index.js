@@ -185,7 +185,6 @@ export const requestLogout = () => {
 
 export const setUserInfo = data => {
 	localStorage.setItem('kiwiTypeUser', data.session_token)
-	console.log(data)
 	return {
 		type: 'SET_USER',
 		data
@@ -279,7 +278,6 @@ export const fetchScores = (id) => {
   		.withCredentials()
   		.end((err,res) => {
   			const parsed = JSON.parse(res.text)
-  			console.log(parsed)
   			dispatch(receiveScores(parsed))
   		})
   }
@@ -319,8 +317,14 @@ export const postScore = (excerptId, wpm) => {
 			.type('form')
 			.send({excerpt_id: excerptId, wpm: wpm})
 			.end((err, res) => {
-				const parsed = JSON.parse(res.text)
-				dispatch(recordWpm(parsed.wpm, parsed.title, excerptId))
+				if (err) {
+					console.log(err, res)
+				}
+				else {
+					console.log(res)
+					const parsed = JSON.parse(res.text)
+					dispatch(recordWpm(parsed.wpm, parsed.title, excerptId))
+				}
 			})
 	}
 }
