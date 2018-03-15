@@ -9,7 +9,7 @@ import ScoreModalContainer from '../containers/ScoreModalContainer'
 class App extends Component<{}> {
 	componentWillMount = () => {
 		request
-			.get('http://localhost:9292/excerpts/init')
+			.get('https://kiwitype-api.herokuapp.com/excerpts/init')
 			.end((err, data) => {
 				if (err) {
 					console.log(err)

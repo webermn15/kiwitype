@@ -114,7 +114,7 @@ export const getLoginInfo = data => {
 	return (dispatch) => {
 		dispatch(requestLogin())
 		request
-			.post("http://localhost:9292/users/login")
+			.post("https://kiwitype-api.herokuapp.com/users/login")
 			.withCredentials()
 			.type('form')
 			.send(data)
@@ -171,7 +171,7 @@ export const requestLogout = () => {
 	return (dispatch) => {
 		dispatch(logUserOut())
 		request
-			.get('http://localhost:9292/users/logout')
+			.get('https://kiwitype-api.herokuapp.com/users/logout')
 			.withCredentials()
 			.end((err, res) => {
 				const parsed = JSON.parse(res.text)
@@ -197,7 +197,7 @@ export const getUserInfoFromToken = token => {
   return (dispatch) => {
     dispatch(requestLogin())
   	request
-  		.get("http://localhost:9292/users/token/"+token)
+  		.get("https://kiwitype-api.herokuapp.com/users/token/"+token)
   		.withCredentials()
   		.end((err,res) => {
 				const parsed = JSON.parse(res.text)
@@ -234,7 +234,7 @@ export const registerNewUser = data => {
 	return (dispatch) => {
 		dispatch(requestRegister())
 		request
-			.post("http://localhost:9292/users/register")
+			.post("https://kiwitype-api.herokuapp.com/users/register")
 			.withCredentials()
 			.type('form')
 			.send(data)
@@ -275,7 +275,7 @@ export const fetchScores = (id) => {
   return (dispatch) => {
     dispatch(requestScores())
   	request
-  		.get("http://localhost:9292/attempts/scores/"+id)
+  		.get("https://kiwitype-api.herokuapp.com/attempts/scores/"+id)
   		.withCredentials()
   		.end((err,res) => {
   			const parsed = JSON.parse(res.text)
@@ -314,7 +314,7 @@ export const postScore = (excerptId, wpm) => {
 	return (dispatch) => {
 		dispatch(postResult())
 		request
-			.post('http://localhost:9292/attempts/new')
+			.post('https://kiwitype-api.herokuapp.com/attempts/new')
 			.withCredentials()
 			.type('form')
 			.send({excerpt_id: excerptId, wpm: wpm})
