@@ -101,7 +101,7 @@ class ExcerptInput extends Component<{}> {
 				<button 
           onClick={() => {
             !this.state.timer ? this.startTimer() : this.clearTimer()
-            document.getElementById('disable-this').disabled = true
+            document.getElementById('disable-this').disabled = !this.state.timer ? true : false
           }}
           id="disable-this"
           className="start-excerpt-button"
