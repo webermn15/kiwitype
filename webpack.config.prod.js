@@ -28,6 +28,5 @@ module.exports = {
         use: ['file-loader']
       }
     ]
-  },
-  mode: 'production'
+  }
 }
