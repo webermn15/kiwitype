@@ -5,7 +5,7 @@
   "main": "index.js",
   "dependencies": {
     "express": "^4.16.3",
-    "nodemon": "^1.17.1",
+    "nodemon": "^1.18.4",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
     "react-redux": "^5.0.7",
@@ -29,10 +29,10 @@
     "file-loader": "^1.1.11",
     "raw-loader": "^0.5.1",
     "style-loader": "^0.20.2",
-    "webpack": "^4.0.1",
-    "webpack-cli": "^2.0.9",
+    "webpack": "^4.20.2",
+    "webpack-cli": "^3.1.2",
     "webpack-dev-middleware": "^3.0.1",
-    "webpack-dev-server": "^3.1.0"
+    "webpack-dev-server": "^3.1.9"
   },
   "scripts": {
     "start": "node server.js",
