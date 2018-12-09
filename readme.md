@@ -1,7 +1,7 @@
 ##### Kiwitype
 
 ### A typing practice application
-I'm a typist. I worked a summer as a transcriptionist, I have over 500 races on http://TypeRacer.com, and my wpm hovers around 90. I tend to gravitate towards things that resonate with me when deciding on a project, and I wanted to work with React-Redux this time around, so a nice, clean, single page Typing practice application was a perfect project idea.
+I'm a typist. I worked a summer as a transcriptionist, I have over 500 races on http://TypeRacer.com, and my wpm fluctuates between 90-100. I tend to gravitate towards things that resonate with me when deciding on a project, and I wanted to work with React-Redux this time around, so a nice, clean, single page Typing practice application was a perfect project idea.
 
 ### My goal
 for this project was to attempt to expand on my understanding of more workplace-oriented developent environment. I learned Webpack to set up my development boilerplate, and challenged my understanding of React by learning and implementing Redux for state management (I love it!). I focused on development practices like letting my data shape my application and trying to write DRY code. I learned a lot about ES6 notation and how you should structure your directory tree (this is the first and last time I want to split them up by component/container), and I further developed my understanding of Rails/Sinatra. I'm pleased with the result!

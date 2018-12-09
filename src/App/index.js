@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import request from 'superagent';
 import { connect } from 'react-redux';
-import { setSelectedExcerpt, setAllScores, setFilteredExcerpts, fetchScores } from './actions';
+import { setSelectedExcerpt, setAllScores, setFilteredExcerpts } from './actions';
 import Header from './Header';
 import Game from './Game';
 import ScoreModalContainer from '../containers/ScoreModalContainer';
@@ -12,7 +12,7 @@ class App extends Component<{}> {
 			.get('https://kiwitype-api.herokuapp.com/excerpts/init')
 			.end((err, data) => {
 				if (err) {
-					console.log(err)
+					console.log(err) //YIKES
 				}
 				else {
 					const parsed = JSON.parse(data.text)

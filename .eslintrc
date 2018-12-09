@@ -4,7 +4,7 @@
     "react"
   ],
   "rules": {
-  	"prop-types": [2]
+  	"react/prop-types": [1]
   },
   "extends": ["eslint:recommended", "plugin:react/recommended"]
 }

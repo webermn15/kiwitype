@@ -3,3 +3,10 @@ export const toggleInfo = () => {
 		type: 'TOGGLE_INFO'
 	}
 }
+
+
+export const toggleStatsModal = () => {
+	return {
+		type: 'TOGGLE_STATS'
+	}
+}

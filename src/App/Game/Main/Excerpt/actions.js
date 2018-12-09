@@ -1,3 +1,5 @@
+import request from 'superagent';
+
 export const postScore = (excerptId, wpm) => {
 	return (dispatch) => {
 		dispatch(postResult())
@@ -8,10 +10,10 @@ export const postScore = (excerptId, wpm) => {
 			.send({excerpt_id: excerptId, wpm: wpm})
 			.end((err, res) => {
 				if (err) {
-					console.log(err, res)
+					console.log(err, res) // Y I K E S
 				}
 				else {
-					console.log(res)
+					console.log(res) // YOINKS
 					const parsed = JSON.parse(res.text)
 					dispatch(recordWpm(parsed.wpm, parsed.title, excerptId))
 				}

@@ -1,10 +1,13 @@
+import request from 'superagent';
+
+
 export const getUserInfoFromToken = token => {
-  return (dispatch) => {
-    dispatch(requestLogin())
-  	request
-  		.get("https://kiwitype-api.herokuapp.com/users/token/"+token)
-  		.withCredentials()
-  		.end((err,res) => {
+	return (dispatch) => {
+		dispatch(requestLogin())
+		request
+			.get("https://kiwitype-api.herokuapp.com/users/token/"+token)
+			.withCredentials()
+			.end((err,res) => {
 				const parsed = JSON.parse(res.text)
 				if (parsed.success) {
 					console.log(parsed.user.id)
@@ -14,8 +17,8 @@ export const getUserInfoFromToken = token => {
 				else {
 					console.log(parsed)
 				}
-  		})
-  }
+			})
+	}
 }
 
 

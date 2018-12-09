@@ -8,7 +8,7 @@ import kiwiApp from './reducers';
 import { getUserInfoFromToken } from './actions';
 
 const middleware = applyMiddleware(thunk)
- 
+
 let store = createStore(
 	kiwiApp, 
 	compose(
@@ -20,12 +20,12 @@ let store = createStore(
 const user = localStorage.getItem('kiwiTypeUser')
 
 if (user) {
-  store.dispatch(getUserInfoFromToken(user))
+	store.dispatch(getUserInfoFromToken(user))
 }
 
 render(
 	<Provider store={store}>
-  	<App />
-  </Provider>,
-  document.getElementById('root')
+		<App />
+	</Provider>,
+	document.getElementById('root')
 );

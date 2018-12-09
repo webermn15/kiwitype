@@ -36,8 +36,7 @@
 }
 */
 
-import { combineReducers } from 'redux'
-import { asideFilters } from '../actions'
+import { combineReducers } from 'redux';
 
 const initialUserState = {
 		id: 0, 
@@ -227,4 +226,4 @@ const kiwiApp = combineReducers({
   showStatsModal
 })
  
-export default kiwiApp
+export default kiwiApp;

@@ -1,3 +1,6 @@
+import request from 'superagent';
+
+
 export const setSelectedExcerpt = object => {
 	return {
 		type: 'SET_SELECTED_EXCERPT',
@@ -26,9 +29,9 @@ export const setFilteredExcerpts = array => {
 
 
 const requestScores = () => {
-  return {
-    type: 'REQUEST_SCORES'
-  }
+	return {
+		type: 'REQUEST_SCORES'
+	}
 }
 
  
@@ -44,14 +47,14 @@ const receiveScores = object => {
 
 
 export const fetchScores = (id) => {
-  return (dispatch) => {
-    dispatch(requestScores())
-  	request
-  		.get("https://kiwitype-api.herokuapp.com/attempts/scores/"+id)
-  		.withCredentials()
-  		.end((err,res) => {
-  			const parsed = JSON.parse(res.text)
-  			dispatch(receiveScores(parsed))
-  		})
-  }
+	return (dispatch) => {
+		dispatch(requestScores())
+		request
+			.get("https://kiwitype-api.herokuapp.com/attempts/scores/"+id)
+			.withCredentials()
+			.end((err,res) => {
+				const parsed = JSON.parse(res.text)
+				dispatch(receiveScores(parsed))
+			})
+	}
 }
