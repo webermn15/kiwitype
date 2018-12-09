@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import '../header.css';
-import { toggleRegister } from './actions';
 
 class LoginModal extends Component<{}> {
 	constructor() {

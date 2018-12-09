@@ -9,7 +9,7 @@ const UserInfo = ({userInfo, toggleInfo}) => (
 		style={{fontFamily: 'Helvetica'}}
 		onClick={() => toggleInfo()}
 	>
-		{userInfo.username}'s Stats
+		{userInfo.username}&apos;s Stats
 		{userInfo.showInfo ? <UserInfoModal username={userInfo.username} wpm={userInfo.lifetimeWpm}/> : null}
 	</div>
 )

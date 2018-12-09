@@ -34,7 +34,7 @@ const requestScores = () => {
 	}
 }
 
- 
+
 const receiveScores = object => {
 	return {
 		type: 'RECEIVE_SCORES',

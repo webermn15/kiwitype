@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { setSelectedExcerpt, setAllScores, setFilteredExcerpts } from './actions';
 import Header from './Header';
 import Game from './Game';
-import ScoreModalContainer from '../containers/ScoreModalContainer';
+import ScoreModalContainer from './ScoreModal';
 
 class App extends Component<{}> {
 	componentWillMount = () => {

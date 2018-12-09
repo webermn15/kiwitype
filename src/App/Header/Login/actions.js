@@ -94,6 +94,15 @@ const requestRegister = () => {
 }
 
 
+export const setUserInfo = data => {
+	localStorage.setItem('kiwiTypeUser', data.session_token)
+	return {
+		type: 'SET_USER',
+		data
+	}
+}
+
+
 const setNewUser = data => {
 	localStorage.setItem('kiwiTypeUser', data.session_token)
 	return {

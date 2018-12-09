@@ -1,7 +1,7 @@
 import React from 'react';
 import './header.css';
-import LoginContainer from './LoginContainer';
-import UserInfoContainer from './UserInfoContainer';
+import LoginContainer from './Login';
+import UserInfoContainer from './UserInfo';
 import ktLogo from './ktlogo.svg';
 
 const Header = () => (
