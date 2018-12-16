@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import ExcerptDetail from './ExcerptDetail';
 import '../main.css'
 
@@ -21,3 +22,9 @@ const Excerpt = ({currentExcerpt, bodyArray, currentIndex}) => (
 )
 
 export default Excerpt;
+
+Excerpt.propTypes = {
+	currentExcerpt: PropTypes.object.isRequired,
+	bodyArray: PropTypes.array.isRequired,
+	currentIndex: PropTypes.number.isRequired
+}

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 import { postScore } from './actions';
 import '../main.css';
 import Excerpt from './Excerpt';
@@ -114,3 +115,8 @@ class ExcerptInput extends Component<{}> {
 }
 
 export default connect()(ExcerptInput);
+
+ExcerptInput.propTypes = {
+	dispatch: PropTypes.func.isRequired,
+	currentExcerpt: PropTypes.object.isRequired
+}

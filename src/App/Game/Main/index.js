@@ -1,5 +1,5 @@
 import React from 'react';
-import ExcerptContainer from './Excerpt';
+import { ExcerptContainer } from './Excerpt';
 import KeyboardDisplay from './KeyboardDisplay';
 import './main.css';
 

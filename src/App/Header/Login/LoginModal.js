@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import '../header.css';
 
 class LoginModal extends Component<{}> {
@@ -82,3 +83,12 @@ class LoginModal extends Component<{}> {
 }
 
 export default LoginModal;
+
+LoginModal.propTypes = {
+	registering: PropTypes.bool.isRequired,
+	requestLogin: PropTypes.func.isRequired,
+	requestRegister: PropTypes.func.isRequired,
+	authenticating: PropTypes.bool.isRequired,
+	errorMsg: PropTypes.string,
+	toggleRegister: PropTypes.func.isRequired
+}

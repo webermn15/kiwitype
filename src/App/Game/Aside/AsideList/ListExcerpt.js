@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 const ListExcerpt = ({author, title, id, onClick}) => (
 	<li style={{
@@ -16,3 +17,10 @@ const ListExcerpt = ({author, title, id, onClick}) => (
 )
 
 export default ListExcerpt;
+
+ListExcerpt.propTypes = {
+	author: PropTypes.string.isRequired,
+	title: PropTypes.string.isRequired,
+	id: PropTypes.number.isRequired,
+	onClick: PropTypes.func.isRequired
+}

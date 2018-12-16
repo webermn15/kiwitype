@@ -1,5 +1,5 @@
 import React from 'react';
-import FilterLinkContainer from './FilterLink';
+import { FilterLinkContainer } from './FilterLink';
 
 export const AsideFilters = {
 	SHOW_EXCERPTS: 'SHOW_EXCERPTS',

@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 const Link = ({active, children, onFilterClick}) => {
 	if (active) {
@@ -19,3 +20,9 @@ const Link = ({active, children, onFilterClick}) => {
 }
 
 export default Link;
+
+Link.propTypes = {
+  active: PropTypes.bool.isRequired,
+  children: PropTypes.node,
+  onFilterClick: PropTypes.func.isRequired
+}

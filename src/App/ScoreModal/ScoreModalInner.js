@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 const ScoreModalInner = ({wpm, title, isPosting, onClick}) => {
 	if (isPosting) {
@@ -24,3 +25,10 @@ const ScoreModalInner = ({wpm, title, isPosting, onClick}) => {
 }
 
 export default ScoreModalInner;
+
+ScoreModalInner.propTypes = {
+	wpm: PropTypes.number.isRequired,
+	title: PropTypes.string.isRequired,
+	isPosting: PropTypes.bool.isRequired,
+	onClick: PropTypes.func.isRequired
+}

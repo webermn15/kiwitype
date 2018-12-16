@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 const UserInfoModal = ({username, wpm}) => (
 	<div className="user-info-modal">
@@ -8,3 +9,8 @@ const UserInfoModal = ({username, wpm}) => (
 )
 
 export default UserInfoModal;
+
+UserInfoModal.propTypes = {
+	username: PropTypes.string,
+	wpm: PropTypes.string
+}

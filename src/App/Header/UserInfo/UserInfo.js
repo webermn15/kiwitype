@@ -1,5 +1,5 @@
 import React from 'react';
-// import { toggleInfo } from '../../actions'; why am I importing this??
+import PropTypes from 'prop-types';
 import UserInfoModal from './UserInfoModal';
 import '../header.css';
 
@@ -15,3 +15,8 @@ const UserInfo = ({userInfo, toggleInfo}) => (
 )
 
 export default UserInfo;
+
+UserInfo.propTypes = {
+	userInfo: PropTypes.object,
+	toggleInfo: PropTypes.func.isRequired
+}

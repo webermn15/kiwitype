@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import ListScore from './ListScore';
 import ListExcerpt from './ListExcerpt';
 import '../aside.css';
@@ -32,3 +33,9 @@ const AsideList = ({asideList, asideFilter, onExcerptClick}) => {
 }
 
 export default AsideList;
+
+AsideList.propTypes = {
+	asideList: PropTypes.array,
+	asideFilter: PropTypes.bool.isRequired,
+	onExcerptClick: PropTypes.func.isRequired
+}

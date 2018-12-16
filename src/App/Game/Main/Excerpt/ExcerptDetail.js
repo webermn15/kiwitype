@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types';
 import '../main.css';
 
 const ExcerptDetail = ({id, author, title, description}) => (
@@ -16,3 +17,10 @@ const ExcerptDetail = ({id, author, title, description}) => (
 )
 
 export default ExcerptDetail;
+
+ExcerptDetail.propTypes = {
+	id: PropTypes.number,
+	author: PropTypes.string,
+	title: PropTypes.string,
+	description: PropTypes.string
+}

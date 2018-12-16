@@ -1,6 +1,6 @@
 import React from 'react';
 import AsideFilter from './AsideFilter';
-import AsideListContainer from './AsideList';
+import { AsideListContainer } from './AsideList';
 import './aside.css';
 
 const Aside = () => (

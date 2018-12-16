@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 const ListScore = ({username, wpm, id, creation_date}) => (
 	<li style={{
@@ -9,3 +10,10 @@ const ListScore = ({username, wpm, id, creation_date}) => (
 )
 
 export default ListScore;
+
+ListScore.propTypes = {
+	username: PropTypes.string.isRequired,
+	wpm: PropTypes.string.isRequired,
+	id: PropTypes.number.isRequired,
+	creation_date: PropTypes.string.isRequired
+}
