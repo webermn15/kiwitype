@@ -6,6 +6,7 @@ import { setSelectedExcerpt, setAllScores, setFilteredExcerpts } from './actions
 import Header from './Header';
 import Game from './Game';
 import { ScoreModalContainer } from './ScoreModal';
+import { AlertModalContainer } from './AlertModal';
 
 class App extends Component<{}> {
 	componentWillMount = () => {
@@ -30,6 +31,7 @@ class App extends Component<{}> {
 				<Header />
 				<Game />
 				<ScoreModalContainer />
+				<AlertModalContainer />
 			</div>
 		)
 	}

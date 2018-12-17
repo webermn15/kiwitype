@@ -1,5 +1,6 @@
 import request from 'superagent';
 
+
 export const closeResult = () => {
 	return {
 		type: 'CLOSE_RESULT'

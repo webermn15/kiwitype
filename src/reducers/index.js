@@ -187,6 +187,24 @@ const asideFilter = (state = 'SHOW_EXCERPTS', action) => {
   }
 }
 
+const alertMessage = (state = 'Something went wrong!', action) => {
+	switch (action.type) {
+		case 'ERROR_MSG':
+			return action.message
+		default:
+			return state
+	}
+}
+
+const showAlertModal = (state = true, action) => {
+	switch (action.type) {
+		case 'TOGGLE_ALERT':
+			return !state
+		default:
+			return state
+	}
+}
+
 const showLoginModal = (state = false, action) => {
 	switch (action.type) {
 		case 'TOGGLE_LOGIN':
@@ -223,7 +241,9 @@ const kiwiApp = combineReducers({
   asideFilter,
   showLoginModal,
   registering,
-  showStatsModal
+  showStatsModal,
+  alertMessage,
+  showAlertModal
 })
 
 
