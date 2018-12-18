@@ -1,5 +1,5 @@
-export const toggleAlert = () => {
+export const hideAlert = () => {
 	return {
-		type: 'TOGGLE_ALERT'
+		type: 'HIDE_ALERT'
 	}
 }

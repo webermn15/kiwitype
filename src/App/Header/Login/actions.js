@@ -14,6 +14,21 @@ export const toggleRegister = () => {
 }
 
 
+const errorRetrievingMessage = msg => {
+	return {
+		type: 'ERROR_MSG',
+		message: msg
+	}
+}
+
+
+const showAlert = () => {
+	return {
+		type: 'SHOW_ALERT'
+	}
+}
+
+
 export const getLoginInfo = data => {
 	return (dispatch) => {
 		dispatch(requestLogin())
@@ -22,21 +37,35 @@ export const getLoginInfo = data => {
 			.withCredentials()
 			.type('form')
 			.send(data)
-			.end((err, res) => {
-				if (res.text !== undefined) {
-					const parsed = JSON.parse(res.text)
-					if (parsed.success) {
-						dispatch(setUserInfo(parsed.user))
-						dispatch(toggleLoginModal())
-					}
-					else {
-						dispatch(loginFailed(parsed.message))
-					}
+			.then(res => {
+				const parsed = JSON.parse(res.text)
+				if (parsed.success) {
+					dispatch(setUserInfo(parsed.user))
+					dispatch(toggleLoginModal())
 				}
 				else {
-					console.log(err)
+					dispatch(loginFailed(parsed.message))
 				}
 			})
+			.catch(err => {
+				dispatch(errorRetrievingMessage(err.message))
+				dispatch(showAlert())
+			})
+			// .end((err, res) => {
+			// 	if (res.text !== undefined) {
+			// 		const parsed = JSON.parse(res.text)
+			// 		if (parsed.success) {
+			// 			dispatch(setUserInfo(parsed.user))
+			// 			dispatch(toggleLoginModal())
+			// 		}
+			// 		else {
+			// 			dispatch(loginFailed(parsed.message))
+			// 		}
+			// 	}
+			// 	else {
+			// 		console.log(err)
+			// 	}
+			// })
 	}
 }
 

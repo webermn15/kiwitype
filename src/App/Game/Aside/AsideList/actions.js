@@ -26,15 +26,34 @@ const receiveScores = object => {
 }
 
 
+const errorGettingScores = msg => {
+	return {
+		type: 'ERROR_MSG',
+		message: msg
+	}
+}
+
+
+const showAlert = () => {
+	return {
+		type: 'SHOW_ALERT'
+	}
+}
+
+
 export const fetchScores = (id) => {
 	return (dispatch) => {
 		dispatch(requestScores())
 		request
 			.get("https://kiwitype-api.herokuapp.com/attempts/scores/"+id)
 			.withCredentials()
-			.end((err,res) => {
+			.then(res => {
 				const parsed = JSON.parse(res.text)
 				dispatch(receiveScores(parsed))
+			})
+			.catch(err => {
+				dispatch(errorGettingScores(err.message))
+				dispatch(showAlert())
 			})
 	}
 }

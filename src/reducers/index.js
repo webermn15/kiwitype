@@ -196,10 +196,12 @@ const alertMessage = (state = 'Something went wrong!', action) => {
 	}
 }
 
-const showAlertModal = (state = true, action) => {
+const showAlertModal = (state = false, action) => {
 	switch (action.type) {
-		case 'TOGGLE_ALERT':
-			return !state
+		case 'SHOW_ALERT':
+			return true
+		case 'HIDE_ALERT':
+			return false
 		default:
 			return state
 	}

@@ -1,6 +1,19 @@
 import request from 'superagent';
 
 
+export const errorGettingScores = msg => {
+	return {
+		type: 'ERROR_MSG',
+		message: msg
+	}
+}
+
+export const showAlert = () => {
+	return {
+		type: 'SHOW_ALERT'
+	}
+}
+
 export const setSelectedExcerpt = object => {
 	return {
 		type: 'SET_SELECTED_EXCERPT',

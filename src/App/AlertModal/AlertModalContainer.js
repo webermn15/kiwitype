@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import AlertModal from './AlertModal';
-import { toggleAlert } from './actions';
+import { hideAlert } from './actions';
 
 const mapStateToProps = state => {
 	return {
@@ -11,7 +11,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
 	return {
-		toggleAlert: () => dispatch(toggleAlert())
+		toggleAlert: () => dispatch(hideAlert())
 	}
 }
 

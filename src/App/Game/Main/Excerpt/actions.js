@@ -8,16 +8,29 @@ export const postScore = (excerptId, wpm) => {
 			.withCredentials()
 			.type('form')
 			.send({excerpt_id: excerptId, wpm: wpm})
-			.end((err, res) => {
-				if (err) {
-					console.log(err, res) // Y I K E S
-				}
-				else {
-					console.log(res) // YOINKS
-					const parsed = JSON.parse(res.text)
-					dispatch(recordWpm(parsed.wpm, parsed.title, excerptId))
-				}
+			.then(res => {
+				const parsed = JSON.parse(res.text)
+				dispatch(recordWpm(parsed.wpm, parsed.title, excerptId))
 			})
+			.catch(err => {
+				dispatch(errorPostingScores(err.message))
+				dispatch(showAlert())
+			})
+	}
+}
+
+
+const errorPostingScores = msg => {
+	return {
+		type: 'ERROR_MSG',
+		message: msg
+	}
+}
+
+
+const showAlert = () => {
+	return {
+		type: 'SHOW_ALERT'
 	}
 }
 
