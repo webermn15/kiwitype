@@ -33,9 +33,5 @@ module.exports = {
         use: ['babel-loader', 'eslint-loader']
       }
     ]
-  },
-  devServer: {
-    contentBase: path.resolve(__dirname, 'dist/public')
-  },
-  mode: 'development'
+  }
 }
