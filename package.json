@@ -41,7 +41,7 @@
     "webpack": "^4.20.2",
     "webpack-cli": "^3.1.2",
     "webpack-dev-middleware": "^3.0.1",
-    "webpack-dev-server": "^3.1.9",
+    "webpack-dev-server": "^3.1.14",
     "webpack-merge": "^4.1.5"
   },
   "scripts": {
@@ -58,7 +58,7 @@
     ],
     "transform": {
       "^.+\\.js$": "babel-jest",
-      "^.+\\.(css|scss|less)$": "jest-css-modules"
+      "^.+\\.(css|scss)$": "jest-css-modules"
     },
     "globals": {
       "NODE_ENV": "test"
